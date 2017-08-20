@@ -56,7 +56,7 @@ export default {
     historyApiFallback: true,
   },
   plugins: [
-    //new CleanWebpackPlugin(['build'], {}),
+    new CleanWebpackPlugin(['build'], {}),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve('./app/index.ejs'),

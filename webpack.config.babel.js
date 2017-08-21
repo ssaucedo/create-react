@@ -52,7 +52,7 @@ export default {
     contentBase: PATHS.build,
     hot: true,
     inline: true,
-    quiet: true,
+    quiet: false,
     historyApiFallback: true,
   },
   plugins: [

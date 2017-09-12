@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 
+import './styles.css'
 
 class LoginContainer extends Component {
 
   render() {
     return (
-        <h3>{'Login'}</h3>
+        <div className='login'>
+          <h3>{'Login'}</h3>
+        </div>
     )
   }
 

@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
 import path from 'path'
 
 const PATHS = {
@@ -35,29 +34,24 @@ export default {
         exclude: /node_modules/,
         use: [{ loader: 'babel-loader' }],
       },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
-          'postcss-loader'
-        ]
-      },
-      { test: /\.ico$/,
-        use: [{ loader: 'file?name=[name].[ext]&context=./app/' }],
+      { test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          loader: 'css-loader?importLoaders=1!postcss-loader',
+        }),
       },
     ],
   },
+  devtool: 'cheap-module-inline-source-map',
   devServer: {
     contentBase: PATHS.build,
     hot: true,
     inline: true,
-    quiet: false,
+    quiet: true,
     historyApiFallback: true,
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], {}),
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('[name].css'),
     new HtmlWebpackPlugin({
       template: path.resolve('./app/index.ejs'),
       inject: true,

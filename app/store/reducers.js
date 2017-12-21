@@ -1,10 +1,10 @@
 
-export default function state(state = {}, action) {
+export default function state(state = {test: {}}, action) {
   switch (action.type) {
-    case 'UPDATE_STATE':
-      return Object.assign({}, state, {
-        visibilityFilter: action.filter
-      })
+    case 'CONNECTED_ELEMENT_INTERACTION':
+      return {
+        type: 'CONNECTED_ELEMENT_INTERACTION'
+      }
     default:
       return state
   }

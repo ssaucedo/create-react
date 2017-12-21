@@ -1,5 +1,5 @@
+import React, {Component} from 'react'
 import 'babel-polyfill'
-import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import {getRoutes} from './config/routes'
@@ -7,22 +7,21 @@ import {customHistory} from './config/customHistory'
 import state from './store/reducers'
 
 import createSagaMiddleware from 'redux-saga'
-import {createStore, compose, applyMiddleware, combineReducers} from 'redux'
+import {createStore, compose, applyMiddleware} from 'redux'
 import rootSagas from './sagas/rootSagas'
 
+class App extends Component {
+  render() {
+    return (getRoutes(customHistory));
+  }
+}
 
 const sagaMiddleware = createSagaMiddleware()
 
-var App = React.createClass({
-  render: function () {
-    return (getRoutes(customHistory));
-  }
-});
-
 ReactDOM.render(
     <Provider store={
-      createStore(combineReducers({state}), compose(applyMiddleware(sagaMiddleware)))
-    }>
+      createStore(state, applyMiddleware(sagaMiddleware),
+          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
       <App/>
     </Provider>
     , document.getElementById("app"));

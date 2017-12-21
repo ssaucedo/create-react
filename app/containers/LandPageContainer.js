@@ -1,15 +1,24 @@
 import React, {Component} from 'react'
-
+import ConnectedElement from './ConnectedElement'
+import {connect} from 'react-redux'
 
 class LandPageContainer extends Component {
 
   render() {
     return (
-        <h3>{'LandPage Updated'}</h3>
+        <div>
+          <ConnectedElement dispatch={this.props.dispatch} />
+          <ConnectedElement dispatch={this.props.dispatch} />
+          <ConnectedElement dispatch={this.props.dispatch} />
+          <ConnectedElement dispatch={this.props.dispatch} />
+        </div>
+
     )
   }
-
 }
 
+const mapStateToProps = props => ({})
 
-export default LandPageContainer
+const mapDispatchToProps = dispatch => ({dispatch})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandPageContainer)

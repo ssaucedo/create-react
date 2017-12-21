@@ -4,11 +4,7 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import {getRoutes} from './config/routes'
 import {customHistory} from './config/customHistory'
-import state from './store/reducers'
-
-import createSagaMiddleware from 'redux-saga'
-import {createStore, compose, applyMiddleware} from 'redux'
-import rootSagas from './sagas/rootSagas'
+import store from './store/baseStore'
 
 class App extends Component {
   render() {
@@ -16,15 +12,11 @@ class App extends Component {
   }
 }
 
-const sagaMiddleware = createSagaMiddleware()
+
 
 ReactDOM.render(
-    <Provider store={
-      createStore(state, applyMiddleware(sagaMiddleware),
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
+    <Provider store={store}>
       <App/>
     </Provider>
     , document.getElementById("app"));
 
-
-sagaMiddleware.run(rootSagas)

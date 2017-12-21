@@ -10,5 +10,5 @@ function * testSaga () {
 
 
 export default [
-  takeEvery("CONNECTED_ELEMENT_INTERACTION", testSaga)
+  function*() { yield takeEvery("CONNECTED_ELEMENT_INTERACTION", testSaga)}
 ]

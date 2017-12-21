@@ -1,11 +1,28 @@
 import React from 'react'
+import styled from "styled-components";
 import PropTypes from 'prop-types'
-import './styles.css'
+
+
+const StyledText = styled.p`
+  color: palevioletred;
+`;
+
+const Wrapper = styled.div`
+    background: lightblue;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
+    border-radius: 2px;
+    cursor: pointer;
+`;
 
 const ConnectedElement = (props) => {
-  return <div className="connected-element" onClick={() => props.dispatch({type: 'CONNECTED_ELEMENT_INTERACTION', payload: {}})}>
-    {'Connected component'}
-  </div>
+  return (
+      <Wrapper onClick={() => props.dispatch({type: 'CONNECTED_ELEMENT_INTERACTION', payload: {}})}>
+        <StyledText>{'Connected component'}</StyledText>
+      </Wrapper>
+  )
 }
 
 ConnectedElement.propTypes = {

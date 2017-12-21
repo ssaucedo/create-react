@@ -4,7 +4,7 @@ import state from '../store/reducers'
 import rootSagas from '../sagas/rootSagas'
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(combineReducers(state), compose(
+const store = createStore(state, compose(
     applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ))

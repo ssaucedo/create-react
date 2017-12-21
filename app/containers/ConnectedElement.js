@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 const ConnectedElement = (props) => {
   return (
       <Wrapper onClick={() => props.dispatch({type: 'CONNECTED_ELEMENT_INTERACTION', payload: {}})}>
-        <StyledText>{'Connected component'}</StyledText>
+        <StyledText>{'Connected'}</StyledText>
       </Wrapper>
   )
 }

@@ -1,6 +1,8 @@
 # Redux Saga Patterns [Add travis]
 
-
+```
+npm run start
+```
 
 ## Pattern 1:
   Saga View decoupling:

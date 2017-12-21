@@ -1,11 +1,8 @@
-
-
-
-const baseUI = {
+const baseUIState = {
   elements: {},
 }
 
-export default function baseUI(state = baseUI, action) {
+export default function baseUI(state = baseUIState, action) {
   switch (action.type) {
     case 'SHOW_ELEMENT':
       return {

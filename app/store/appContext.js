@@ -1,4 +1,4 @@
-const context = {
+const baseContext = {
   user: {
     name: '1',
     id: '11234142'
@@ -8,7 +8,7 @@ const context = {
   }
 }
 
-export default function context(state = baseUI, action) {
+export default function context(state = baseContext, action) {
   switch (action.type) {
     default:
       return state

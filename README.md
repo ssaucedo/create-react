@@ -16,7 +16,9 @@ npm run start
   
 ## Pattern 3:
   Handle all interactions in sagas. UI flows handle on a centralized way User interactions and Services interactions.
-  The redux store is updated from UI flows, not from Services (services are implemented as sagas on this pattern) 
+  The redux store is updated from UI flows, not from Services (services are implemented as sagas on this pattern).
+  This allows to easily test all the interactions on a centralized way. Removing all the flow logic from the components
+  (e.g from any of the react lifecycle methods) the remain simple.    
     
 
 ### Stack

@@ -20,7 +20,7 @@ import ActionAutorenew from 'material-ui/svg-icons/action/autorenew';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import ActionTimeline from 'material-ui/svg-icons/action/timeline';
 
-class LandPageContainer extends Component {
+class ContentResolver extends Component {
 
   constructor(props) {
     super(props)
@@ -75,16 +75,14 @@ class LandPageContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    label: state.context.appContext.context,
-    isCreation: state.context.appContext.context === 'CREATION',
+    pattern: state.uiStore.content.pattern,
   }
 }
 
-LandPageContainer.propTypes = {
-  label: PropTypes.string.isRequired,
-  isCreation: PropTypes.bool.isRequired,
+ContentResolver.propTypes = {
+  pattern: PropTypes.string.isRequired,
 }
 
 const mapDispatchToProps = dispatch => ({dispatch})
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandPageContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ContentResolver)

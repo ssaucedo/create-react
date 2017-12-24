@@ -30,6 +30,7 @@ class LandPageContainer extends Component {
 
     const style = {
       paper: {
+        height: '100%',
         display: 'inline-block',
         float: 'left',
       },

@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 import {
   MainContiner,
   ContentContainer,
-  PatternContainer,
   SidebarContainer,
   Pattern,
   FlowSwitch
@@ -44,27 +43,29 @@ class LandPageContainer extends Component {
             <SidebarContainer>
               <Paper style={style.paper}>
                 <Menu>
-                  <MenuItem onClick	={updatePattern('PATTERN_1')} primaryText="Pattern 1" rightIcon={<ActionAutorenew />}/>
-                  <MenuItem onClick	={updatePattern('PATTERN_2')} primaryText="Pattern 2" rightIcon={<ActionReorder />}/>
-                  <MenuItem onClick	={updatePattern('PATTERN_3')} primaryText="Pattern 3" rightIcon={<ActionTimeline />}/>
+                  <MenuItem onClick={updatePattern('PATTERN_1')} primaryText="Pattern 1"
+                            rightIcon={<ActionAutorenew />}/>
+                  <MenuItem onClick={updatePattern('PATTERN_2')} primaryText="Pattern 2" rightIcon={<ActionReorder />}/>
+                  <MenuItem onClick={updatePattern('PATTERN_3')} primaryText="Pattern 3"
+                            rightIcon={<ActionTimeline />}/>
                 </Menu>
               </Paper>
             </SidebarContainer>
             <ContentContainer>
-              <Pattern>
-                <FlowSwitch>
-                  <div>{`${this.props.label}`}</div>
-                  <Toggle
-                      onClick={() => this.props.dispatch(
-                          {
-                            type: 'CHANGE_APP_CONTEXT',
-                            payload: {context: this.props.isCreation ? 'EDITION' : 'CREATION'}
-                          })}
-                      toggled={this.props.isCreation}
-                  />
-                </FlowSwitch>
-                <ConnectedElement dispatch={this.props.dispatch}/>
-              </Pattern>
+                <Pattern>
+                  <FlowSwitch>
+                    <div>{`${this.props.label}`}</div>
+                    <Toggle
+                        onClick={() => this.props.dispatch(
+                            {
+                              type: 'CHANGE_APP_CONTEXT',
+                              payload: {context: this.props.isCreation ? 'EDITION' : 'CREATION'}
+                            })}
+                        toggled={this.props.isCreation}
+                    />
+                  </FlowSwitch>
+                  <ConnectedElement dispatch={this.props.dispatch}/>
+                </Pattern>
             </ContentContainer>
           </MainContiner>
         </MuiThemeProvider>

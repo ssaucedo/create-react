@@ -48,3 +48,10 @@ npm run start
   * Pattern 3 to this repo
     * Find the better way to represent it.
     * Document.
+    
+    
+    
+# NEW IDEA:
+    
+    - BUILD A WEBPACK PLUGIN TO BUILD AN APP WITH DIFFERENT VIEWS!
+    - WOOOO

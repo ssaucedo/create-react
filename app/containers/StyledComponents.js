@@ -1,31 +1,22 @@
-import styled from "styled-components";
+import React from 'react'
+import './styles.css'
 
+const WrappWithClassName = (className) =>  props => {
+  return (
+      <div className={className}>
+        {props.children}
+      </div>
+  );
+}
 
-export const MainContiner = styled.div`
-  display: flex;
-  margin-top: 16px;
-  margin-right: 16px;
-  margin-left: 16px;
-`;
+export const MainContainer = WrappWithClassName('main-container')
 
-export const SidebarContainer = styled.div`
-  width: 14%;
-`;
+export const SidebarContainer = WrappWithClassName('sidebar-container')
 
-export const ContentContainer = styled.div`
-  width: 86%;
-`;
+export const ContentContainer = WrappWithClassName('content-container')
 
-export const Pattern = styled.div`
-  background-color: blue;
-  height: 200px;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-  width: 100%;
-  
-`;
+export const Pattern = WrappWithClassName('pattern')
 
-export const FlowSwitch = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+export const FlowSwitch = WrappWithClassName('flow-switch')
+
+export const AppContainer = WrappWithClassName('app-container')

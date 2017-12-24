@@ -5,6 +5,8 @@ import {Provider} from 'react-redux'
 import {getRoutes} from './config/routes'
 import {customHistory} from './config/customHistory'
 import store from './store/baseStore'
+import {AppContainer} from './containers/StyledComponents'
+import './containers/styles.css'
 
 class App extends Component {
   render() {
@@ -13,10 +15,11 @@ class App extends Component {
 }
 
 
-
 ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-    </Provider>
+    <AppContainer>
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    </AppContainer>
     , document.getElementById("app"));
 

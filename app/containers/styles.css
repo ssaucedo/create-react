@@ -1,0 +1,29 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+
+#id {
+    background-color: red;
+    min-height: 100%;
+}
+
+.app-container {
+        height: 100%;
+        width: 100%;
+        .main-container {
+            width: 100%;
+            display: flex;
+
+
+        & .sidebar-container {
+            height: 20%;
+        }
+
+        & .content-container {
+            height: 80%;
+        }
+    }
+}

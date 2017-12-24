@@ -26,5 +26,25 @@ npm run start
 * Redux.
 * Redux-saga.
 * React 16.
-* Styled components.
+* Styled components. // tested and removed.
 * Material UI.
+
+
+### Todos:
+
+* General:
+  * Sagas isolation.
+  * Find a best way to handle async operations state. (new pattern?)
+
+
+
+* Patterns:
+
+  * Pattern 1
+    * Display on a more explanatory way. Now it is just a console.log.
+  * Pattern 2 to this repo
+    * Find the better way to represent it.
+    * Document.
+  * Pattern 3 to this repo
+    * Find the better way to represent it.
+    * Document.

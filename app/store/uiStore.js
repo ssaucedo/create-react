@@ -3,18 +3,18 @@
 const baseUIState = {
   elements: {},
   content: {
-    pattern: '' // one of PATTERN_1, PATTERN_2, PATTERN_3
+    pattern: 'PATTERN_1' // one of PATTERN_1, PATTERN_2, PATTERN_3
   }
 }
 
 export default function baseUI(state = baseUIState, action) {
   switch (action.type) {
-    case 'SHOW_ELEMENT':
+    case 'CHANGE_PATTERN':
       return {
           ...state,
-          elements: {
-            ...state.elements,
-            ...action.payload,
+          content: {
+              ...state.content,
+              pattern: action.payload.pattern,
           }
       }
     default:

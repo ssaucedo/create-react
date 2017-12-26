@@ -20,6 +20,9 @@ npm run start
   This allows to easily test all the interactions on a centralized way. Removing all the flow logic from the components
   (e.g from any of the react lifecycle methods) the remain simple.    
     
+## Pattern 4:
+   On async requests I want to refresh data depending on a time limit, if the already fetched data is older than the limit, we fetch again.
+   As the fetched data now includes a timestamp add an auto refresh of data based on a timer. The idea is to define an awesome API.
 
 ### Stack
 
@@ -48,8 +51,8 @@ npm run start
   * Pattern 3 to this repo
     * Find the better way to represent it.
     * Document.
-    
-    
+  * Pattern 4
+    * Check if reselect memoization is not related.
     
 # NEW IDEA:
     

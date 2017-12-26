@@ -49,7 +49,13 @@ class LandPageContainer extends Component {
               </Paper>
             </SidebarContainer>
             <ContentContainer>
-              <PatternResolver/>
+              <Paper style={{
+                  ...style.paper,
+                width: '100%',
+                padding: '20px',
+              }}>
+                <PatternResolver/>
+              </Paper>
             </ContentContainer>
           </MainContainer>
         </MuiThemeProvider>

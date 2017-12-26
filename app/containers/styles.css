@@ -21,6 +21,7 @@ body > div {
 
             & .sidebar-container {
                   width: 15%;
+                  min-width: 176px;
                   height: 80%;
 
             }
@@ -28,7 +29,6 @@ body > div {
             & .content-container {
                   width: 85%;
                   height: 80%;
-                  padding: 10px;
             }
     }
 }

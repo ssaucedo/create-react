@@ -19,7 +19,7 @@ export const getRoute = (context) => {
  * @param action
  * @return {*}
  */
-function operationsReducers (state = stateObject, action) {
+export default function operations(state = stateObject, action) {
 	const {type, payload} = action
 	switch (type) {
 
@@ -132,8 +132,4 @@ function operationsReducers (state = stateObject, action) {
 		default:
 			return state
 	}
-}
-
-export default {
-	operations: operationsReducers,
 }

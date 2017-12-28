@@ -144,8 +144,6 @@ function * cartAdditionConfirmation (action) {
 
 }
 
-
-
 function * connectedElementInteractionOnCreationWatcher () {
   yield takeEvery('CONNECTED_ELEMENT_INTERACTION', connectedElementInteractionOnCreation)
 }
@@ -158,9 +156,6 @@ export default [
   function*() {
     yield call(appContextChange, yield take("CHANGE_APP_CONTEXT"))
   },
-  function*() {
-    yield call(startShopping, yield take("START_SHOPPING"))
-  }
 ]
 
 

@@ -53,6 +53,7 @@ class LandPageContainer extends Component {
                   ...style.paper,
                 width: '100%',
                 padding: '20px',
+                overflow: 'scroll',
               }}>
                 <PatternResolver/>
               </Paper>

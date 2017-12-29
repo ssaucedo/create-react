@@ -12,6 +12,6 @@ const store = createStore(combineReducers({state, uiStore, context, operations})
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ))
 
-sagaMiddleware.run(...rootSagas)
+sagaMiddleware.run(rootSagas)
 
 export default store

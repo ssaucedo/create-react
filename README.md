@@ -24,6 +24,9 @@ npm run start
    On async requests I want to refresh data depending on a time limit, if the already fetched data is older than the limit, we fetch again.
    As the fetched data now includes a timestamp add an auto refresh of data based on a timer. The idea is to define an awesome API.
 
+## Pattern 5 (pattern?): Service-BE integration testing with version snapshots:
+   
+
 ### Stack
 
 * Redux.

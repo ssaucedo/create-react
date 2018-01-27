@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {connect} from 'react-redux'
@@ -9,12 +9,6 @@ import {
 } from './StyledComponents'
 
 import Paper from 'material-ui/Paper';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
-import ActionAutorenew from 'material-ui/svg-icons/action/autorenew';
-import ActionReorder from 'material-ui/svg-icons/action/reorder';
-import ActionTimeline from 'material-ui/svg-icons/action/timeline';
-import PatternResolver from './PatternResolver'
 
 class LandPageContainer extends Component {
 
@@ -32,20 +26,11 @@ class LandPageContainer extends Component {
       },
     };
 
-    const {dispatch} = this.props
-    const updatePattern = (pattern) => () => dispatch({type: 'CHANGE_PATTERN', payload: {pattern}})
     return (
         <MuiThemeProvider>
           <MainContainer>
             <SidebarContainer>
               <Paper style={style.paper}>
-                <Menu>
-                  <MenuItem onClick={updatePattern('PATTERN_1')} primaryText="Pattern 1"
-                            rightIcon={<ActionAutorenew />}/>
-                  <MenuItem onClick={updatePattern('PATTERN_2')} primaryText="Pattern 2" rightIcon={<ActionReorder />}/>
-                  <MenuItem onClick={updatePattern('PATTERN_3')} primaryText="Pattern 3"
-                            rightIcon={<ActionTimeline />}/>
-                </Menu>
               </Paper>
             </SidebarContainer>
             <ContentContainer>
@@ -55,7 +40,7 @@ class LandPageContainer extends Component {
                 padding: '20px',
                 overflow: 'scroll',
               }}>
-                <PatternResolver/>
+                {'CONTENCT'}
               </Paper>
             </ContentContainer>
           </MainContainer>

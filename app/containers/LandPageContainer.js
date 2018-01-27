@@ -1,11 +1,9 @@
 
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {connect} from 'react-redux'
 import {
   MainContainer,
   ContentContainer,
-  SidebarContainer,
 } from './StyledComponents'
 
 import Paper from 'material-ui/Paper';
@@ -21,26 +19,18 @@ class LandPageContainer extends Component {
     const style = {
       paper: {
         height: '100%',
+        width: '100%',
         display: 'inline-block',
-        float: 'left',
+        padding: '20px',
       },
     };
 
     return (
         <MuiThemeProvider>
           <MainContainer>
-            <SidebarContainer>
-              <Paper style={style.paper}>
-              </Paper>
-            </SidebarContainer>
             <ContentContainer>
-              <Paper style={{
-                  ...style.paper,
-                width: '100%',
-                padding: '20px',
-                overflow: 'scroll',
-              }}>
-                {'CONTENCT'}
+              <Paper style={style.paper}>
+                {'Content'}
               </Paper>
             </ContentContainer>
           </MainContainer>
@@ -51,6 +41,5 @@ class LandPageContainer extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({dispatch})
 
-export default connect(null, mapDispatchToProps)(LandPageContainer)
+export default LandPageContainer

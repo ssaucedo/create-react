@@ -7,6 +7,7 @@ import {
 } from './StyledComponents'
 
 import Paper from 'material-ui/Paper';
+import WebWorkerComponent from '../components/WebWorkerComponent'
 
 class LandPageContainer extends Component {
 
@@ -30,7 +31,7 @@ class LandPageContainer extends Component {
           <MainContainer>
             <ContentContainer>
               <Paper style={style.paper}>
-                {'Content'}
+                <WebWorkerComponent />
               </Paper>
             </ContentContainer>
           </MainContainer>

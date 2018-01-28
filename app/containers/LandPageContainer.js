@@ -8,6 +8,7 @@ import {
 
 import Paper from 'material-ui/Paper';
 import WebWorkerComponent from '../components/WebWorkerComponent'
+import CheckRefreshWorkerComponent from '../components/CheckRefreshWorkerComponent'
 
 class LandPageContainer extends Component {
 
@@ -31,7 +32,7 @@ class LandPageContainer extends Component {
           <MainContainer>
             <ContentContainer>
               <Paper style={style.paper}>
-                <WebWorkerComponent />
+                <CheckRefreshWorkerComponent />
               </Paper>
             </ContentContainer>
           </MainContainer>

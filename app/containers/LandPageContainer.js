@@ -7,8 +7,8 @@ import {
 } from './StyledComponents'
 
 import Paper from 'material-ui/Paper';
-import WebWorkerComponent from '../components/WebWorkerComponent'
-import CheckRefreshWorkerComponent from '../components/CheckRefreshWorkerComponent'
+import LeapMotionController from '../components/LeapMotionController'
+
 
 class LandPageContainer extends Component {
 
@@ -32,7 +32,7 @@ class LandPageContainer extends Component {
           <MainContainer>
             <ContentContainer>
               <Paper style={style.paper}>
-                <CheckRefreshWorkerComponent />
+                <LeapMotionController />
               </Paper>
             </ContentContainer>
           </MainContainer>

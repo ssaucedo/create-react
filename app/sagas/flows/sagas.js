@@ -154,17 +154,23 @@ function * connectedElementInteractionOnEditionWatcher () {
 
 export default [
   function*() {
-    yield call(appContextChange, yield take("CHANGE_APP_CONTEXT"))
+    yield call(appContextChange, yield take("SET_APP_CONTEXT"))
   },
 ]
 
-
+/**
+ * Default sagas are OnCreation sagas.
+ * @param context
+ * @return {[*]}
+ */
 const contextSagaMapper = context => {
   switch (context) {
     case 'CREATION':
       return [connectedElementInteractionOnCreationWatcher]
     case 'EDITION':
       return [connectedElementInteractionOnEditionWatcher]
+    default:
+      return [connectedElementInteractionOnCreationWatcher]
   }
 }
 

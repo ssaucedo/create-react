@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 
 import {
   Pattern,
@@ -33,13 +32,7 @@ const Pattern1 = props => {
 Pattern1.propTypes = {
   label: PropTypes.string.isRequired,
   isCreation: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => {
-  return {
-    label: state.context.appContext.context,
-    isCreation: state.context.appContext.context === 'CREATION',
-  }
-}
-
-export default connect(mapStateToProps)(Pattern1)
+export default Pattern1

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { OPERATIONS } from '../sagas/operationsSagas'
+import { OPERATIONS } from '../sagas/Pattern2/operations'
 
 export const EditFlight = props => {
 	const {EDIT_FLIGHT_DATE} = OPERATIONS

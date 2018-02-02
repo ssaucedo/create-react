@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getInProgressOperations} from './helpers'
-import { OPERATIONS } from '../sagas/operationsSagas'
+import { OPERATIONS } from '../sagas/Pattern2/operations'
 import FlightEditionContainer from './FlightEditionContainer'
 
 const {FLIGHT_EDITION} = OPERATIONS

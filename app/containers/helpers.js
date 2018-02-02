@@ -1,5 +1,5 @@
 import {or, path, when, isEmpty, always} from 'ramda'
-import { OPERATIONS } from '../sagas/operationsSagas'
+import { OPERATIONS } from '../sagas/Pattern2/operations'
 import {getRoute} from '../store/opsReducers'
 
 export const getInProgressOperations = (state) => state.operations.inProgress

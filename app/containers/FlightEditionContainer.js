@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { OPERATIONS } from '../sagas/operationsSagas'
+import { OPERATIONS } from '../sagas/Pattern2/operations'
 import { getOperationInfo, triggerAction } from './helpers'
-import { or, equals } from 'ramda'
 import { FlightEdition } from './FlightEdition'
 
 class FlightEditionContainer extends React.Component {

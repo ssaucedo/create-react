@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {
   Pattern,
 } from '../../containers/StyledComponents'
-import {OPERATIONS} from '../../sagas/operationsSagas'
+import {OPERATIONS} from '../../sagas/Pattern2/operations'
 import FlightEditionContainer from '../FlightEditionContainer'
 import { getInProgressOperations } from '../helpers'
 

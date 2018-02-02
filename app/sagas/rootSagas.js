@@ -1,4 +1,4 @@
-import sagas from './flows/sagas'
+import sagas from './Pattern1/sagas'
 import { fork } from 'redux-saga/effects'
 import publicOperations from './publicOperations'
 

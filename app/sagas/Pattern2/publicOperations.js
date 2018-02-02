@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga/effects'
-import {flightEditionOperation, OPERATIONS} from './operationsSagas'
+import {flightEditionOperation, OPERATIONS} from './operations'
 
 
 function* flightEditionOperationWatcher () {

@@ -32,6 +32,9 @@ class LandPageContainer extends Component {
       },
     };
 
+    // const pattern2 = <MenuItem onClick={updatePattern('PATTERN_2')} primaryText="Pattern 2" rightIcon={<ActionReorder />}/>
+
+
     const {dispatch} = this.props
     const updatePattern = (pattern) => () => dispatch({type: 'CHANGE_PATTERN', payload: {pattern}})
     return (
@@ -42,7 +45,7 @@ class LandPageContainer extends Component {
                 <Menu>
                   <MenuItem onClick={updatePattern('PATTERN_1')} primaryText="Pattern 1"
                             rightIcon={<ActionAutorenew />}/>
-                  <MenuItem onClick={updatePattern('PATTERN_2')} primaryText="Pattern 2" rightIcon={<ActionReorder />}/>
+
                   <MenuItem onClick={updatePattern('PATTERN_3')} primaryText="Pattern 3"
                             rightIcon={<ActionTimeline />}/>
                 </Menu>

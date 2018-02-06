@@ -11,8 +11,6 @@ const ContentResolver = props => {
   switch (props.pattern) {
     case 'PATTERN_1':
       return <Pattern1Container/>
-    case 'PATTERN_2':
-      return <Pattern2/>
     case 'PATTERN_3':
       return <Pattern3/>
   }

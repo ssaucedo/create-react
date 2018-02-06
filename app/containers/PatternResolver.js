@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Pattern1Container from '../containers/Patterns/Pattern1Container'
-import Pattern2 from '../containers/Patterns/Pattern2'
 import Pattern3 from '../containers/Patterns/Pattern3'
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import Pattern1 from './Pattern1'
+import Pattern1 from '../../components/Patterns/Pattern1'
 
 class Pattern1Container extends Component {
 

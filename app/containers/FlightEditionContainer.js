@@ -31,7 +31,7 @@ FlightEditionContainer.propTypes = {
 		succeed: PropTypes.object,
 		failed: PropTypes.object,
 		step: PropTypes.string,
-		steps: PropTypes.string,
+		steps: PropTypes.object,
 	}),
 
 }

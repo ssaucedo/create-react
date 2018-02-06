@@ -10,7 +10,11 @@ class Pattern1Container extends Component {
     super(props)
   }
 
+  /**
+   * Initial APP_CONTEXT is configured from store.
+   */
   componentWillMount () {
+    console.trace()
     this.props.dispatch(
       {
         type: 'SET_APP_CONTEXT',

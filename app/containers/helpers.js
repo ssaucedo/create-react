@@ -12,8 +12,8 @@ export const getOperationInfo = (id, operationName, state, context = []) => {
 	}))(path(getRoute(context), state))
 	return {
 		operation: or(contextObject.inProgress[id], {}),
-		succeed: or(contextObject.succeed[id], false),
-		failed: or(contextObject.failed[id], false),
+		succeed: or(contextObject.succeed[id], {}),
+		failed: or(contextObject.failed[id], {}),
 		step: or(or(contextObject.inProgress[id], {}).step, ''),
 		steps: or(OPERATIONS[operationName].steps, {}),
 		actions: or(OPERATIONS[operationName].actions, {}),

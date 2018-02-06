@@ -12,6 +12,11 @@ const {FLIGHT_EDITION} = OPERATIONS
 
 const Pattern2 = props => {
   console.log('props', props)
+  let proc = Object.values(props.inProgress)
+  if(proc.length > 3) {
+    proc = proc.slice(0,3)
+  }
+
   return (
       <Pattern>
         <div>
@@ -19,7 +24,7 @@ const Pattern2 = props => {
             <button
                 onClick={() => props.dispatch({type: FLIGHT_EDITION.name, payload: {}})}>{FLIGHT_EDITION.name}</button>
           </div>
-          {Object.values(props.inProgress).map((p, k) =>
+          {proc.map((p, k) =>
               <FlightEditionContainer dispatch={props.dispatch} id={p.id} key={k}/>
           )}
         </div>

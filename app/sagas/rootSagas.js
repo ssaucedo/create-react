@@ -1,6 +1,5 @@
 import { fork } from 'redux-saga/effects'
 import pattern1 from './Pattern1/sagas'
-import pattern2 from './Pattern2/publicOperations'
 
 function startSagas (...sagas) {
   return function * rootSaga () {
@@ -8,4 +7,4 @@ function startSagas (...sagas) {
   }
 }
 
-export default startSagas(...pattern1, ...pattern2)
+export default startSagas(...pattern1)

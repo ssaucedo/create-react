@@ -1,8 +1,4 @@
 const baseContext = {
-  user: {
-    name: '1',
-    id: '11234142'
-  },
   appContext: {
       context: 'CREATION' // creation or edition
   }

@@ -1,12 +1,11 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import state from '../store/reducers'
-import context from '../store/appContext'
+import context from './Pattern1/store'
 import uiStore from '../store/uiStore'
 import rootSagas from '../sagas/rootSagas'
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(combineReducers({state, uiStore, context}), compose(
+const store = createStore(combineReducers({uiStore, context}), compose(
     applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : (f) => f
 ))

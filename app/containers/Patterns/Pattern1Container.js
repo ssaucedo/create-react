@@ -20,9 +20,7 @@ class Pattern1Container extends Component {
 
   render () {
     return (
-      <div>
         <Pattern1 {...this.props} />
-      </div>
     )
   }
 }

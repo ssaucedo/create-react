@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Pattern1Container from '../containers/Patterns/Pattern1Container'
-import Pattern3 from '../containers/Patterns/Pattern3'
+import Pattern3Container from '../containers/Patterns/Pattern3Container'
 
 
 const ContentResolver = props => {
@@ -11,7 +11,7 @@ const ContentResolver = props => {
     case 'PATTERN_1':
       return <Pattern1Container/>
     case 'PATTERN_3':
-      return <Pattern3/>
+      return <Pattern3Container/>
   }
 }
 

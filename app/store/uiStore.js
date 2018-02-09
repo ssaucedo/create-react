@@ -3,7 +3,7 @@
 const baseUIState = {
   elements: {},
   content: {
-    pattern: 'PATTERN_1' // one of PATTERN_1, PATTERN_2, PATTERN_3
+    pattern: 'PATTERN_3' // one of PATTERN_1, PATTERN_2, PATTERN_3
   }
 }
 

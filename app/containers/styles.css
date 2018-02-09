@@ -22,13 +22,17 @@ body > div {
             & .sidebar-container {
                   width: 15%;
                   min-width: 176px;
-                  height: 80%;
+                  height: 95%;
 
             }
 
             & .content-container {
                   width: 85%;
-                  height: 80%;
+                  height: 95%;
+            }
+
+            & .pattern {
+                  height: 100%;
             }
     }
 }

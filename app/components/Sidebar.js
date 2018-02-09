@@ -14,12 +14,10 @@ const defaultStyles = {
     height: '100%',
     zIndex: 2,
     transition: 'transform .3s ease-out',
-    WebkitTransition: '-webkit-transform .3s ease-out',
     willChange: 'transform',
   },
   content: {
     position: 'absolute',
-    WebkitOverflowScrolling: 'touch',
     transition: 'left .3s ease-out, right .3s ease-out',
   },
   overlay: {
@@ -40,14 +38,7 @@ class Sidebar extends Component {
 
   constructor (props) {
     super(props)
-    this.overlayClicked = this.overlayClicked.bind(this)
     this.saveSidebarRef = this.saveSidebarRef.bind(this)
-  }
-
-  overlayClicked () {
-    if (this.props.open) {
-      this.props.onSetOpen(false)
-    }
   }
 
   saveSidebarRef (node) {
@@ -63,18 +54,15 @@ class Sidebar extends Component {
       role: 'navigation',
     }
 
-    // sidebarStyle right/left
     if (this.props.pullRight) {
       sidebarStyle.right = 0
       sidebarStyle.transform = 'translateX(100%)'
-      sidebarStyle.WebkitTransform = 'translateX(100%)'
       if (this.props.shadow) {
         sidebarStyle.boxShadow = '-2px 2px 4px rgba(0, 0, 0, 0.15)'
       }
     } else {
       sidebarStyle.left = 0
       sidebarStyle.transform = 'translateX(-100%)'
-      sidebarStyle.WebkitTransform = 'translateX(-100%)'
       if (this.props.shadow) {
         sidebarStyle.boxShadow = '2px 2px 4px rgba(0, 0, 0, 0.15)'
       }
@@ -83,7 +71,6 @@ class Sidebar extends Component {
     if (this.props.open) {
       // slide open sidebar
       sidebarStyle.transform = `translateX(0%)`
-      sidebarStyle.WebkitTransform = `translateX(0%)`
 
       // show overlay
       overlayStyle.opacity = 1
@@ -92,21 +79,20 @@ class Sidebar extends Component {
 
     if (!this.props.transitions) {
       sidebarStyle.transition = 'none'
-      sidebarStyle.WebkitTransition = 'none'
       contentStyle.transition = 'none'
       overlayStyle.transition = 'none'
     }
 
     return (
       <div {...rootProps}>
-        <div className={this.props.sidebarClassName} style={sidebarStyle} ref={this.saveSidebarRef}>
+        <div className='custom-sidebar-class' style={sidebarStyle} ref={this.saveSidebarRef}>
           {this.props.sidebar}
         </div>
         <div className={this.props.overlayClassName}
              style={overlayStyle}
              role="presentation"
              tabIndex="0"
-             onClick={this.overlayClicked}
+             onClick={() => this.props.onSetOpen(this.props.open)}
         />
         <div className={this.props.contentClassName} style={contentStyle}>
           {this.props.children}
@@ -119,24 +105,20 @@ class Sidebar extends Component {
 Sidebar.defaultProps = {
   open: false,
   transitions: true,
-  pullRight: false,
+  pullRight: true,
   shadow: true,
   onSetOpen: () => {},
   styles: {},
 }
 
 Sidebar.propTypes = {
-  children: PropTypes.node.isRequired, // main content to render
-  rootClassName: PropTypes.string, // root component optional class
-  sidebarClassName: PropTypes.string, // sidebar optional class
-  contentClassName: PropTypes.string, // content optional class
-  overlayClassName: PropTypes.string, // overlay optional class
-  sidebar: PropTypes.node.isRequired, // sidebar content to render
-  open: PropTypes.bool, // boolean if sidebar should slide open
-  transitions: PropTypes.bool, // boolean if transitions should be disabled
-  pullRight: PropTypes.bool, // Place the sidebar on the right
-  shadow: PropTypes.bool, // Enable/Disable sidebar shadow
-  onSetOpen: PropTypes.func, // callback called when the overlay is clicked
+  children: PropTypes.node.isRequired,
+  sidebar: PropTypes.node.isRequired,
+  open: PropTypes.bool,
+  transitions: PropTypes.bool,
+  pullRight: PropTypes.bool,
+  shadow: PropTypes.bool,
+  onSetOpen: PropTypes.func,
 }
 
 export default Sidebar

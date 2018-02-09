@@ -16,14 +16,10 @@ class Pattern3 extends React.Component {
     super(props)
 
     this.state = {
-      docked: false,
       open: false,
       transitions: true,
-      touch: true,
       shadow: true,
       pullRight: true,
-      touchHandleWidth: 20,
-      dragToggleDistance: 30,
     }
   }
 
@@ -35,14 +31,9 @@ class Pattern3 extends React.Component {
 
     const sidebarProps = {
       sidebar: sidebar,
-      docked: this.state.docked,
       sidebarClassName: 'custom-sidebar-class',
       open: this.state.open,
-      touch: this.state.touch,
       shadow: this.state.shadow,
-      pullRight: this.state.pullRight,
-      touchHandleWidth: this.state.touchHandleWidth,
-      dragToggleDistance: this.state.dragToggleDistance,
       transitions: this.state.transitions,
       onSetOpen: this.onSetOpen,
     }

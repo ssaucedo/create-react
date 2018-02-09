@@ -10,9 +10,13 @@ class Pattern3Container extends Component {
     super(props)
   }
 
+  onSetOpen = () => {
+    this.props.dispatch({type: 'UPDATE_SIDEBAR_STATE'})
+  }
+
   render () {
     return (
-      <Pattern3 {...this.props} />
+      <Pattern3 {...this.props} onSetOpen={this.onSetOpen} />
     )
   }
 }

@@ -86,13 +86,13 @@ class Sidebar extends Component {
     return (
       <div {...rootProps}>
         <div className='custom-sidebar-class' style={sidebarStyle} ref={this.saveSidebarRef}>
-          {this.props.sidebar}
+          <div style={{width: '100%', height: '100%'}}>{'AHHHH'}</div>
         </div>
         <div className={this.props.overlayClassName}
              style={overlayStyle}
              role="presentation"
              tabIndex="0"
-             onClick={() => this.props.onSetOpen(this.props.open)}
+             onClick={() => this.props.onSetOpen()}
         />
         <div className={this.props.contentClassName} style={contentStyle}>
           {this.props.children}
@@ -107,13 +107,11 @@ Sidebar.defaultProps = {
   transitions: true,
   pullRight: true,
   shadow: true,
-  onSetOpen: () => {},
   styles: {},
 }
 
 Sidebar.propTypes = {
   children: PropTypes.node.isRequired,
-  sidebar: PropTypes.node.isRequired,
   open: PropTypes.bool,
   transitions: PropTypes.bool,
   pullRight: PropTypes.bool,

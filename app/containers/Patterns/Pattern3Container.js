@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import Pattern3 from '../../components/Patterns/Pattern3'
+import Pattern3 from '../../components/Pattern3/Pattern3'
 
 class Pattern3Container extends Component {
 
@@ -17,7 +17,6 @@ class Pattern3Container extends Component {
   onStartFlow = () => {
     this.props.dispatch({type: 'USER_STARTS_FLOW'})
   }
-
 
   selectModalOption = (option) => {
     this.props.dispatch({type: 'USER_CONFIRMATION_STEP', ...option})

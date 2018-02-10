@@ -6,7 +6,7 @@ import {
   FlowSwitch
 } from '../../containers/StyledComponents'
 import Toggle from 'material-ui/Toggle';
-import ConnectedElement from '../ConnectedElement'
+import ConnectedElement from './ConnectedElement'
 
 const Pattern1 = props => {
   return (

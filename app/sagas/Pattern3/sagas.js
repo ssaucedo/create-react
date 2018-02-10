@@ -1,4 +1,4 @@
-import { takeLatest, call, fork, put, take, cancel } from 'redux-saga/effects'
+import { takeLatest, call, put, take } from 'redux-saga/effects'
 import basicFlowService from './sagasServices'
 
 export default {

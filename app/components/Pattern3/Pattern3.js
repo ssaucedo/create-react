@@ -4,10 +4,10 @@ import {
   Pattern,
 } from '../../containers/StyledComponents'
 
-import Sidebar from '../Sidebar'
-import Modal from '../Modal'
+import Sidebar from './Sidebar'
+import Modal from './Modal'
 
-import '../styles.css'
+import './styles.css'
 
 class Pattern3 extends React.Component {
 
@@ -25,6 +25,7 @@ class Pattern3 extends React.Component {
           selectOption={this.props.selectOption}>
           <Pattern>
             <Modal open={this.props.isModalOpen} selectModalOption={this.props.selectModalOption}/>
+
             <div className="start-flow" onClick={this.props.onStartFlow}>
               {'START'}
             </div>

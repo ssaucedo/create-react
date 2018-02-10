@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './styles.css'
 const ConfirmationModal = props => {
@@ -8,6 +9,11 @@ const ConfirmationModal = props => {
       <div className="modal-cancel" onClick={() => props.selectModalOption({cancel: true})}>{'CANCEL'}</div>
     </div>
   </div> : null
+}
+
+ConfirmationModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  selectModalOption: PropTypes.func.isRequired,
 }
 
 export default ConfirmationModal

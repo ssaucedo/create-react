@@ -8,7 +8,7 @@ const StartButton = props => {
 }
 
 StartButton.propTypes = {
-  onStartFlow: PropTypes.func,
+  onStartFlow: PropTypes.func.isRequired,
 }
 
 export default StartButton

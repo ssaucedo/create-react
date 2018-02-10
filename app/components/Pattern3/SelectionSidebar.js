@@ -110,6 +110,8 @@ class SelectionSidebar extends Component {
   }
 }
 
+
+
 SelectionSidebar.defaultProps = {
   open: false,
   transitions: true,
@@ -125,8 +127,8 @@ SelectionSidebar.propTypes = {
   transitions: PropTypes.bool,
   pullRight: PropTypes.bool,
   shadow: PropTypes.bool,
-  onSetOpen: PropTypes.func,
-  selectOption: PropTypes.func,
+  onSetOpen: PropTypes.func.isRequired,
+  selectOption: PropTypes.func.isRequired,
 }
 
 export default SelectionSidebar

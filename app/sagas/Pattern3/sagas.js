@@ -1,7 +1,15 @@
 import { takeLatest, call, fork, put, take, cancel } from 'redux-saga/effects'
 import basicFlowService from './sagasServices'
 
-const updateState = (type, payload) => ({type, payload})
+export default {
+  flow: function* () {
+    yield takeLatest('USER_STARTS_FLOW', basicFlow)
+  },
+}
+
+export function updateState (type, payload) {
+  return {type, payload}
+}
 
 /**
  * Basic flow.
@@ -11,16 +19,16 @@ const updateState = (type, payload) => ({type, payload})
  * @TODO Add flow and dummy components tests. (CORE)
  * @return {*}
  */
-function * basicFlow () {
+export function * basicFlow () {
+  try {
   // state is updated from the flow.
   yield put(updateState('UPDATE_SIDEBAR_STATE'))
   yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: true}))
   let res = yield call(basicFlowService)
   if (res.error) {
-    yield put(updateState('ERROR_ON_BASIC_FLOW', {...res}))
+    return yield put(updateState('ERROR_ON_BASIC_FLOW', {...res}))
   }
   yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: false}))
-  console.log('Info retrieved', res.items)
   const selectionStep = yield take('USER_SELECTION_STEP')
   if (selectionStep.cancel) {
     return yield put(updateState('RESET_FLOW'))
@@ -32,11 +40,7 @@ function * basicFlow () {
   }
   yield put(updateState('UPDATE_MODAL_STATE'))
   yield put(updateState('RESET_FLOW'))
+  } catch (e) {
+    return yield put(updateState('ERROR_ON_BASIC_FLOW', {error: 'Unexpected error on basicFlowService', reason: e}))
+  }
 }
-
-export default [
-  function* () {
-    yield takeLatest('USER_STARTS_FLOW', basicFlow)
-  },
-]
-

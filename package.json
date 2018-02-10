@@ -1,12 +1,13 @@
 {
-  "name": "sagas redux patterns",
+  "name": "redux-saga-patterns",
   "version": "1.0.0",
   "description": "redux sagas patterns, architecture playground. In progress",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "npm run serve:dev",
-    "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js"
+    "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,8 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "history": "^3.3.0",
+    "jest": "^22.2.2",
+    "jest-cli": "^22.2.2",
     "material-ui": "^0.20.0",
     "postcss-cssnext": "^3.0.2",
     "prop-types": "^15.6.0",

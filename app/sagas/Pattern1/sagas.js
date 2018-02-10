@@ -48,9 +48,9 @@ const contextSagaMapper = context => {
   }
 }
 
-export default [
-  function*() {
+export default {
+  appContextSwitch: function*() {
     yield call(appContextChange, yield take("SET_APP_CONTEXT"))
   },
-]
+}
 

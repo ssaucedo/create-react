@@ -49,6 +49,7 @@
     vertical-align: middle;
     line-height: 100px;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .cancel-flow {
@@ -61,6 +62,7 @@
     vertical-align: middle;
     line-height: 100px;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .modal-confirm {
@@ -73,6 +75,7 @@
     vertical-align: middle;
     line-height: 100px;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .modal-cancel {
@@ -85,6 +88,7 @@
     vertical-align: middle;
     line-height: 100px;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 

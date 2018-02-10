@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const StartButton = props => {
+const StartButton = (props) => {
   return (<div className="start-flow" onClick={props.onStartFlow}>
     {'START'}
   </div>)

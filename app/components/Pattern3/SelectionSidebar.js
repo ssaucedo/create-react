@@ -89,7 +89,8 @@ class SelectionSidebar extends Component {
             {
               this.props.loading ? <div>{'LOADING'}</div> : (
                 <div>
-                  <div className="next-selection-flow" onClick={() => this.props.selectOption({next: true})}>{'NEXT'}</div>
+                  <div className="next-selection-flow"
+                       onClick={() => this.props.selectOption({next: true})}>{'NEXT'}</div>
                   <div className="cancel-flow" onClick={() => this.props.selectOption({cancel: true})}>{'CANCEL'}</div>
                 </div>
               )
@@ -109,8 +110,6 @@ class SelectionSidebar extends Component {
     )
   }
 }
-
-
 
 SelectionSidebar.defaultProps = {
   open: false,

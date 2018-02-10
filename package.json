@@ -7,7 +7,8 @@
     "build": "webpack",
     "start": "npm run serve:dev",
     "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint app/**/**.js"
   },
   "repository": {
     "type": "git",
@@ -30,12 +31,15 @@
     "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
     "extract-text-webpack-plugin": "^2.0.0",
     "html-webpack-plugin": "^2.29.0",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.9",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "webpack": "2.2",
     "webpack-dev-server": "^2.4.1"
   },
@@ -48,6 +52,8 @@
     "postcss-cssnext": "^3.0.2",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^3.0.5",
     "redux": "^3.7.2",

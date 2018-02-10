@@ -21,8 +21,8 @@ const Pattern3 = props => (
 			<Pattern>
 				<ConfirmationModal open={props.isModalOpen} selectModalOption={props.selectModalOption} />
 				<StartButton onStartFlow={props.onStartFlow} />
-  </Pattern>
-    </SelectionSidebar>
+    </Pattern>
+		</SelectionSidebar>
 	</div>
 )
 

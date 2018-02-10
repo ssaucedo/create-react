@@ -6,9 +6,9 @@ import uiStore from '../store/uiStore'
 import rootSagas from '../sagas/rootSagas'
 
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(combineReducers({uiStore, context, pattern3}), compose(
-    applyMiddleware(sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+const store = createStore(combineReducers({ uiStore, context, pattern3 }), compose(
+	applyMiddleware(sagaMiddleware),
+	window.devToolsExtension ? window.devToolsExtension() : f => f,
 ))
 
 sagaMiddleware.run(rootSagas)

@@ -3,7 +3,7 @@ module.exports = {
     'browser': true,
     'es6': true
   },
-  'extends': ['eslint:recommended', 'airbnb'],
+  'extends': 'airbnb',
   'parserOptions': {
     'ecmaFeatures': {
       'experimentalObjectRestSpread': true,

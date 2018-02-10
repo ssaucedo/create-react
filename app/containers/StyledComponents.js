@@ -1,13 +1,11 @@
 import React from 'react'
 import './styles.css'
 
-const WrappWithClassName = (className) =>  props => {
-  return (
-      <div className={className}>
-        {props.children}
-      </div>
-  );
-}
+const WrappWithClassName = className => props => (
+	<div className={className}>
+		{props.children}
+  </div>
+)
 
 export const MainContainer = WrappWithClassName('main-container')
 

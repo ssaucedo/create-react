@@ -1,4 +1,4 @@
-# Redux Saga Patterns [![Build Status](https://travis-ci.org/ssaucedo/create-react.svg?branch=development)](https://travis-ci.org/ssaucedo/create-react)
+# Redux Saga Patterns [![Build Status](https://travis-ci.org/ssaucedo/redux-saga-patterns.svg?branch=development)](https://travis-ci.org/ssaucedo/redux-saga-patterns)
 
 ```
 npm run start

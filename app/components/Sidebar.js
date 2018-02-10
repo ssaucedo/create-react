@@ -82,19 +82,27 @@ class Sidebar extends Component {
       contentStyle.transition = 'none'
       overlayStyle.transition = 'none'
     }
-
     return (
       <div {...rootProps}>
         <div className='custom-sidebar-class' style={sidebarStyle} ref={this.saveSidebarRef}>
-          <div style={{width: '100%', height: '100%'}}>{'AHHHH'}</div>
+          <div style={{width: '100%', height: '100%'}}>
+            {
+              this.props.loading ? <div>{'LOADING'}</div> : (
+                <div>
+                  <div className="next-selection-flow" onClick={() => this.props.selectOption({next: true})}>{'NEXT'}</div>
+                  <div className="cancel-flow" onClick={() => this.props.selectOption({cancel: true})}>{'CANCEL'}</div>
+                </div>
+              )
+            }
+          </div>
         </div>
         <div className={this.props.overlayClassName}
              style={overlayStyle}
              role="presentation"
              tabIndex="0"
-             onClick={() => this.props.onSetOpen()}
+             onClick={() => this.props.selectOption({cancel: true})}
         />
-        <div className={this.props.contentClassName} style={contentStyle}>
+        <div style={{width: '100%', height: '100%'}}>
           {this.props.children}
         </div>
       </div>
@@ -113,10 +121,12 @@ Sidebar.defaultProps = {
 Sidebar.propTypes = {
   children: PropTypes.node.isRequired,
   open: PropTypes.bool,
+  loading: PropTypes.bool,
   transitions: PropTypes.bool,
   pullRight: PropTypes.bool,
   shadow: PropTypes.bool,
   onSetOpen: PropTypes.func,
+  selectOption: PropTypes.func,
 }
 
 export default Sidebar

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './styles.css'
-const Modal = props => {
+const ConfirmationModal = props => {
   return props.open ? <div className='modal-container'>
     <div className='modal-content'>
       <div className="modal-confirm" onClick={() => props.selectModalOption({confirm: true})}>{'CONFIRM'}</div>
@@ -10,5 +10,5 @@ const Modal = props => {
   </div> : null
 }
 
-export default Modal
+export default ConfirmationModal
 

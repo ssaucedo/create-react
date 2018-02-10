@@ -4,36 +4,28 @@ import {
   Pattern,
 } from '../../containers/StyledComponents'
 
-import Sidebar from './Sidebar'
-import Modal from './Modal'
+import SelectionSidebar from './SelectionSidebar'
+import ConfirmationModal from './ConfirmationModal'
+import StartButton from './StartButton'
 
 import './styles.css'
 
-class Pattern3 extends React.Component {
+const Pattern3 = props => {
 
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    return (
-      <div style={{width: '100%', height: '100%'}}>
-        <Sidebar
-          open={this.props.isSidebarOpen}
-          loading={this.props.isSidebarLoading}
-          onSetOpen={this.props.onSetOpen}
-          selectOption={this.props.selectOption}>
-          <Pattern>
-            <Modal open={this.props.isModalOpen} selectModalOption={this.props.selectModalOption}/>
-
-            <div className="start-flow" onClick={this.props.onStartFlow}>
-              {'START'}
-            </div>
-          </Pattern>
-        </Sidebar>
-      </div>
-    )
-  }
+  return (
+    <div style={{width: '100%', height: '100%'}}>
+      <SelectionSidebar
+        open={props.isSidebarOpen}
+        loading={props.isSidebarLoading}
+        onSetOpen={props.onSetOpen}
+        selectOption={props.selectOption}>
+        <Pattern>
+          <ConfirmationModal open={props.isModalOpen} selectModalOption={props.selectModalOption}/>
+          <StartButton onStartFlow={props.onStartFlow}/>
+        </Pattern>
+      </SelectionSidebar>
+    </div>
+  )
 }
 
 Pattern3.propTypes = {

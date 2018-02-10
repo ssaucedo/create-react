@@ -34,7 +34,7 @@ const defaultStyles = {
   },
 }
 
-class Sidebar extends Component {
+class SelectionSidebar extends Component {
 
   constructor (props) {
     super(props)
@@ -110,7 +110,7 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.defaultProps = {
+SelectionSidebar.defaultProps = {
   open: false,
   transitions: true,
   pullRight: true,
@@ -118,7 +118,7 @@ Sidebar.defaultProps = {
   styles: {},
 }
 
-Sidebar.propTypes = {
+SelectionSidebar.propTypes = {
   children: PropTypes.node.isRequired,
   open: PropTypes.bool,
   loading: PropTypes.bool,
@@ -129,4 +129,4 @@ Sidebar.propTypes = {
   selectOption: PropTypes.func,
 }
 
-export default Sidebar
+export default SelectionSidebar

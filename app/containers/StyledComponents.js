@@ -1,20 +1,25 @@
-import React from 'react'
-import './styles.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import './styles.css';
 
 const WrappWithClassName = className => props => (
-	<div className={className}>
-		{props.children}
+  <div className={className}>
+    {props.children}
   </div>
-)
+);
 
-export const MainContainer = WrappWithClassName('main-container')
+WrappWithClassName.propTypes = {
+  children: PropTypes.node,
+};
 
-export const SidebarContainer = WrappWithClassName('sidebar-container')
+export const MainContainer = WrappWithClassName('main-container');
 
-export const ContentContainer = WrappWithClassName('content-container')
+export const SidebarContainer = WrappWithClassName('sidebar-container');
 
-export const Pattern = WrappWithClassName('pattern')
+export const ContentContainer = WrappWithClassName('content-container');
 
-export const FlowSwitch = WrappWithClassName('flow-switch')
+export const Pattern = WrappWithClassName('pattern');
 
-export const AppContainer = WrappWithClassName('app-container')
+export const FlowSwitch = WrappWithClassName('flow-switch');
+
+export const AppContainer = WrappWithClassName('app-container');

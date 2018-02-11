@@ -6,7 +6,7 @@ const StartButton = props => (<div className="start-flow" onClick={props.onStart
 </div>)
 
 StartButton.propTypes = {
-	onStartFlow: PropTypes.func.isRequired,
+  onStartFlow: PropTypes.func.isRequired,
 }
 
 export default StartButton

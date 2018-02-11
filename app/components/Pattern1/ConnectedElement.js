@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-
 const StyledText = styled.p`
   color: palevioletred;
 `
@@ -18,13 +17,13 @@ const Wrapper = styled.div`
 `
 
 const ConnectedElement = props => (
-	<Wrapper onClick={() => props.dispatch({ type: 'CONNECTED_ELEMENT_INTERACTION', payload: {} })}>
-		<StyledText>Connected</StyledText>
+  <Wrapper onClick={() => props.dispatch({type: 'CONNECTED_ELEMENT_INTERACTION', payload: {}})}>
+    <StyledText>Connected</StyledText>
   </Wrapper>
 )
 
 ConnectedElement.propTypes = {
-	dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default ConnectedElement

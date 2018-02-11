@@ -1,6 +1,8 @@
-import { createHistory } from 'history'
-import { useRouterHistory } from 'react-router'
+import { createHistory } from 'history';
+import { useRouterHistory } from 'react-router';
 
-export const customHistory = useRouterHistory(createHistory)({
-	basename: '/',
-})
+const customHistory = useRouterHistory(createHistory)({
+  basename: '/',
+});
+
+export default customHistory;

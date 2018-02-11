@@ -1,35 +1,12 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true
-  },
-  'extends': 'airbnb',
-  'parserOptions': {
-    'ecmaFeatures': {
-      'experimentalObjectRestSpread': true,
-      'jsx': true
-    },
-    'sourceType': 'module'
-  },
-  'plugins': [
-    'react'
-  ],
+  parser: 'babel-eslint',
   'rules': {
-    'indent': [
-      'error',
-      'tab'
-    ],
-    'linebreak-style': [
-      'error',
-      'unix'
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
-    'semi': [
-      'error',
-      'never'
-    ]
-  }
+    'max-len': [1, 120, 2, {ignoreComments: true}],
+    'prop-types': [2]
+  },
+  "globals": {
+    "window": true,
+  },
+  'extends': ['airbnb-base', 'plugin:react/recommended']
 }
+

@@ -9,18 +9,17 @@ import { AppContainer } from './containers/StyledComponents'
 import './containers/styles.css'
 
 class App extends Component {
-	render() {
-		return (getRoutes(customHistory))
-	}
+  render () {
+    return (getRoutes(customHistory))
+  }
 }
 
-
 ReactDOM.render(
-	<AppContainer>
+  <AppContainer>
     <Provider store={store}>
-  <App />
-		</Provider>
+      <App />
+    </Provider>
   </AppContainer>
-	, document.getElementById('app'),
+  , document.getElementById('app'),
 )
 

@@ -3,15 +3,19 @@ import { cloneableGenerator } from 'redux-saga/utils'
 import sagas, { updateState, basicFlow } from '../../Pattern3/sagas'
 import basicFlowService from '../../Pattern3/sagasServices'
 
-describe('Export flow', () => {
-  it('USER STARTS FLOW', () => {
+
+/*
+ *  Tests that the flow is exported and exposed using takeLatest effect.
+ */
+describe('Export and Expose flow', () => {
+  it('BasicFlow exposed through USER_STARTS_FLOW', () => {
     const gen = sagas.flow()
     expect(gen.next().value).toEqual(takeLatest('USER_STARTS_FLOW', basicFlow))
     expect(gen.next().done).toBeTruthy()
   })
 })
 
-describe('Flow saga:', () => {
+describe('Basic flow saga:', () => {
   const gen = cloneableGenerator(basicFlow)()
   expect(gen.next().value).toEqual(put(updateState('UPDATE_SIDEBAR_STATE')))
   expect(gen.next().value).toEqual(put(updateState('UPDATE_SIDEBAR_LOADING', {loading: true})))

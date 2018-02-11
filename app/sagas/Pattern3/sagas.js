@@ -33,7 +33,6 @@ export function updateState (type, payload) {
  *
  *  With a quick look on the following saga a developer can have an idea on how the Apps unique flow is
  *  composed.
- *
  */
 export function* basicFlow () {
   try {

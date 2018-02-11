@@ -5,6 +5,33 @@ import basicFlowService from '../../Pattern3/sagasServices'
 
 
 /*
+    When coding sagas under this pattern, you can start thinking on flows as a whole.
+    Write TDD for flows is simple too.
+    I found that defining just the 'body' or steps of a flow in a test at the beginning can help
+    to see most of the cases from the first moment.
+
+    it('START-NEXT-CONFIRM', () => {
+      **
+    })
+
+    it('START-NEXT-CANCEL', () => {
+      **
+    })
+
+    it('START-CANCEL', () => {
+      **
+    })
+
+    it('START-SERVICE-ERROR', () => {
+      **
+    })
+
+    it('START-UNEXPECTED-ERROR', () => {
+      **
+    })
+ */
+
+/*
  *  Tests that the flow is exported and exposed using takeLatest effect.
  */
 describe('Export and Expose flow', () => {

@@ -11,6 +11,6 @@ function getRoutes(history) {
       </Route>
     </Router>
   );
-};
+}
 
 export default getRoutes;

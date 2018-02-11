@@ -30,6 +30,10 @@ export function updateState (type, payload) {
  *  a API for user interactions and does not have to know how itself interacts with other components in a flow.
  *  The flow saga is the responsible of coordination.
  *
+ *
+ *  With a quick look on the following saga a developer can have an idea on how the Apps unique flow is
+ *  composed.
+ *
  */
 export function* basicFlow () {
   try {

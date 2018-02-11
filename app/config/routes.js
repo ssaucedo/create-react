@@ -3,7 +3,7 @@ import { Router, Route } from 'react-router';
 import LandPageContainer from '../containers/LandPageContainer';
 
 
-const routes = function getRoutes(history) {
+function getRoutes(history) {
   return (
     <Router history={history}>
       <Route >
@@ -13,4 +13,4 @@ const routes = function getRoutes(history) {
   );
 };
 
-export default routes;
+export default getRoutes;

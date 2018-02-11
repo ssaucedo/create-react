@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Pattern1Container from '../containers/Patterns/Pattern1Container';
 import Pattern3Container from '../containers/Patterns/Pattern3Container';

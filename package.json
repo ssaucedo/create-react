@@ -11,6 +11,9 @@
     "lint": "eslint app/**/**.js",
     "lint:fix": "eslint --fix app/**/**.js"
   },
+  "precommit": {
+    "run": ["test", "lint:fix"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ssaucedo/create-react.git"
@@ -42,6 +45,7 @@
     "html-webpack-plugin": "^2.29.0",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.9",
+    "pre-commit": "^1.2.2",
     "webpack": "2.2",
     "webpack-dev-server": "^2.4.1"
   },

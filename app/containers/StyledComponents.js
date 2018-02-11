@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
+/* eslint-disable react/display-name, react/prop-types */
+
 const WrappWithClassName = className => props => (
   <div className={className}>
     {props.children}

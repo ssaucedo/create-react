@@ -1,3 +1,5 @@
 
 /node_modules
 /.idea
+
+app/server/Pattern6/config.js

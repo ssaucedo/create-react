@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "npm run serve:dev",
+    "start": "npm run serve:dev & npm run server:dev",
+    "server:dev": "node ./app/server/Pattern6/app.js",
     "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",
     "test": "jest",
     "lint": "eslint app/**/**.js",
     "lint:fix": "eslint --fix app/**/**.js"
   },
   "precommit": {
-    "run": ["test", "lint:fix"]
+    "run": [
+      "test",
+      "lint:fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -50,6 +54,7 @@
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
     "history": "^3.3.0",
     "jest": "^22.2.2",
@@ -64,6 +69,7 @@
     "react-router": "^3.0.5",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
-    "styled-components": "^2.3.3"
+    "styled-components": "^2.3.3",
+    "twit": "^2.2.9"
   }
 }

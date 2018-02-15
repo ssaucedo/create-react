@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Pattern1Container from '../containers/Patterns/Pattern1Container';
 import Pattern3Container from '../containers/Patterns/Pattern3Container';
+import Pattern6Container from '../containers/Patterns/Pattern6Container';
 
 const ContentResolver = (props) => {
   switch (props.pattern) {
@@ -10,6 +11,8 @@ const ContentResolver = (props) => {
       return <Pattern1Container />;
     case 'PATTERN_3':
       return <Pattern3Container />;
+    case 'PATTERN_6':
+      return <Pattern6Container />;
     default:
       return null;
   }

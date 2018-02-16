@@ -42,6 +42,11 @@ class LandPageContainer extends Component {
                 />
 
                 <MenuItem
+                  onClick={updatePattern('PATTERN_2')}
+                  primaryText="Pattern 2"
+                  rightIcon={<ActionTimeline />}
+                />
+                <MenuItem
                   onClick={updatePattern('PATTERN_3')}
                   primaryText="Pattern 3"
                   rightIcon={<ActionTimeline />}

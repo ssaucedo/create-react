@@ -19,6 +19,10 @@ function getBuilds () {
   return GetRequest(`${path}/builds`)
 }
 
+function getUsers () {
+  return GetRequest(`${path}/users`)
+}
+
 export default {
   name:'buildService',
   getAPIVersion,

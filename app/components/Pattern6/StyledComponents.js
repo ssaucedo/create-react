@@ -21,4 +21,6 @@ export const Seconds = WrappWithClassName('seconds')
 
 export const ContentContainer = WrappWithClassName('content-container')
 
+export const TwittsContainer = WrappWithClassName('twitts-container')
+
 export const AppContainer = WrappWithClassName('app-container')

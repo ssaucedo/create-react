@@ -24,6 +24,11 @@ npm run start
    On async requests I want to refresh data depending on a time limit, if the already fetched data is older than the limit, we fetch again.
    As the fetched data now includes a timestamp add an auto refresh of data based on a timer. The idea is to define an awesome API.
 
+## Pattern 6:
+   Twitts search dashboard that refresh according to a time lapse. Each search has it's own search string and time lapse.
+   Searches can be added and removed.
+
+
 ## Pattern 5 (pattern?): Service-BE integration testing with version snapshots:
    
 
@@ -42,8 +47,6 @@ npm run start
   * Sagas isolation.
   * Find a best way to handle async operations state. (new pattern?)
 
-
-
 * Patterns:
 
   * Pattern 1
@@ -51,13 +54,6 @@ npm run start
   * Pattern 2 to this repo
     * Find the better way to represent it.
     * Document.
-  * Pattern 3 to this repo
-    * Find the better way to represent it.
-    * Document.
   * Pattern 4
     * Check if reselect memoization is not related.
     
-# NEW IDEA:
-    
-    - BUILD A WEBPACK PLUGIN TO BUILD AN APP WITH DIFFERENT VIEWS!
-    - WOOOO

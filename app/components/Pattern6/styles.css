@@ -34,6 +34,11 @@ body > div {
       width: 85%;
       height: 100%;
   }
+
+& .twitts-container {
+    overflow: scroll;
+    height: 94%;
+  }
 }
 }
 

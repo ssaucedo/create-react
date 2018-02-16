@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {
   MainContainer,
   ContentContainer,
+  TwittsContainer,
   SidebarContainer,
   SidebarContent,
   TimeSpanInput,
@@ -38,10 +39,6 @@ class Pattern6 extends Component {
     return (
         <MainContainer>
           <SidebarContainer>
-            <Paper style={{
-              ...style.paper,
-              width: '90%'
-            }}>
               <SidebarContent>
                 <TimeSpanInput>
                   <Seconds>{this.props.timeSpan}</Seconds>
@@ -66,18 +63,15 @@ class Pattern6 extends Component {
                 </Menu>
                 <ContentAdd onClick={this.props.addCycle}/>
               </SidebarContent>
-            </Paper>
           </SidebarContainer>
           <ContentContainer>
-            <Paper style={{
-              ...style.paper,
-            }}>
               <TextField
                 value={this.props.searchQuery}
                 hintText="Search something"
                 onChange={this.props.onChangeSearchQuery}
               />
-              {Object.values(this.props.tweets).map((t, k) => (
+            <TwittsContainer>
+            {Object.values(this.props.tweets).map((t, k) => (
                 <Card onClick={() => {this.props.router.push(`/twit/${t.id}`)}} key={k}>
                   <CardHeader
                     title={t.user.name}
@@ -88,7 +82,7 @@ class Pattern6 extends Component {
                   </CardText>
                 </Card>
               ))}
-            </Paper>
+          </TwittsContainer>
           </ContentContainer>
         </MainContainer>
     )

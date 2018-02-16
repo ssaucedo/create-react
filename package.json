@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "npm run serve:dev & npm run server:dev",
-    "server:dev": "node ./app/server/Pattern6/app.js",
+    "start": "npm run serve:dev & npm run server:pattern6 & npm run server:pattern4",
+    "server:pattern4": "node ./app/server/Pattern4/app.js",
+    "server:pattern6": "node ./app/server/Pattern6/app.js",
     "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",
     "test": "jest",
     "lint": "eslint app/**/**.js",
@@ -69,6 +70,7 @@
     "react-router": "^3.0.5",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
+    "regenerator-runtime": "^0.11.1",
     "styled-components": "^2.3.3",
     "twit": "^2.2.9"
   }

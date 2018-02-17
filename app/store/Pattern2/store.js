@@ -1,3 +1,4 @@
+import {init} from 'ramda'
 
 const initialOperationState = {
   step: 0,
@@ -8,14 +9,23 @@ const initialOperationState = {
 
 const initialState = {
   operations: {},
-  operationIds: {},
+  semaphore: getSemaphore(10),
+  queue: []
+}
+
+// as we deconstruct there is no sense on setting value properties.
+function getSemaphore(value) {
+  const semaphore = Object.create(Object.prototype, {
+      active:{ writable: true, enumerable:true, value: false },
+      value: { writable: true, enumerable:true, value: 0 },
+      limit: { writable: false, enumerable: true, value: value}
+    })
+  return semaphore
 }
 
 export default function state (state = initialState, {type, payload}) {
   switch (type) {
     case 'NEW_OPERATION': {
-      console.log(type)
-      console.log(payload)
       return {
         ...state,
         operations: {
@@ -23,7 +33,6 @@ export default function state (state = initialState, {type, payload}) {
           [payload.id]: {
             ...initialOperationState
           }
-
         }
       }
     }
@@ -36,10 +45,66 @@ export default function state (state = initialState, {type, payload}) {
             ...state.operations[payload.id],
             step: state.operations[payload.id].step + 1
           }
-
         }
       }
     }
+      case 'OPERATION_COMPLETION': {
+        return {
+          ...state,
+          operations: {
+            ...state.operations,
+            [payload.id]: {
+              ...state.operations[payload.id],
+              status: 'COMPLETED'
+            }
+          }
+        }
+      }
+
+    case 'OPERATION_QUEUE': {
+      return {
+        ...state,
+        semaphore: {
+          ...state.semaphore,
+          active: true,
+        }
+      }
+    }
+
+    case 'ACQUIRE': {
+      return {
+        ...state,
+        semaphore: {
+          ...state.semaphore,
+          value: state.semaphore.value + 1,
+        }
+      }
+    }
+
+    case 'RELEASE': {
+      return {
+        ...state,
+        semaphore: {
+          ...state.semaphore,
+          value: state.semaphore.value - 1,
+        }
+      }
+    }
+
+    case 'ADD_TO_QUEUE': {
+      return {
+        ...state,
+        queue: [...state.queue, payload.operation]
+      }
+    }
+
+    case 'PICK_FROM_QUEUE': {
+      return {
+        ...state,
+        queue: init(state.queue),
+      }
+    }
+
 
     default:
       return state

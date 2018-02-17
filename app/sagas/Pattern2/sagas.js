@@ -1,17 +1,14 @@
-import { takeEvery, call, put, take } from 'redux-saga/effects'
+import { takeEvery, call, put, select } from 'redux-saga/effects'
 import {laterReturn} from '../helpers'
 
 export default {
   * flow() {
-    yield takeEvery('START_NEW_OPERATION', operationFlow)
+    yield takeEvery('START_NEW_OPERATION', operationDispatcher)
   },
 }
 
-export function updateState (type, payload) {
-  return {type, payload}
-}
-
-export function* operationFlow () {
+// TODO: FORK the operation, so the operation is not aware of the execution mode.
+export function* operationFlow (active) {
     // Could be a simple action. This is kept as two for the sake of simplicity.
     const id = getUniqueId()
     yield put({type: 'NEW_OPERATION', payload: {id}})
@@ -21,7 +18,37 @@ export function* operationFlow () {
     yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
     yield call(laterReturn, {})
     yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-    yield call(laterReturn, {})
+    yield put({type: 'OPERATION_COMPLETION', payload: {id}})
+    if(active) {
+      yield put({type: 'RELEASE'})
+      yield call(checkQueue)
+    }
+}
+
+
+export function* checkQueue() {
+  const semaphore = yield select((state) => state.pattern2.semaphore)
+  const queue = yield select((state) => state.pattern2.queue)
+  if(semaphore.value !== semaphore.limit && queue.length !== 0) {
+    yield put({type: 'PICK_FROM_QUEUE'})
+    yield call(operationDispatcher)
+  }
+
+}
+
+export function* operationDispatcher() {
+  const semaphore = yield select((state) => state.pattern2.semaphore)
+
+  if(semaphore.active) {
+    if(semaphore.value === semaphore.limit) {
+      yield put({type: 'ADD_TO_QUEUE', payload: {operation: {id: getUniqueId()}}})
+    } else {
+      yield put({type: 'ACQUIRE', payload: {operation: {id: getUniqueId()}}})
+      yield call(operationFlow, semaphore.active)
+    }
+  } else {
+    yield call(operationFlow, false)
+  }
 }
 
 

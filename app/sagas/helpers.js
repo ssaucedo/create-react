@@ -6,7 +6,7 @@ function later(delay) {
 }
 
 function laterReturn(data) {
-  return later(1000).then(() => data);
+  return later(250).then(() => data);
 }
 
 export default ({

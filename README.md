@@ -1,8 +1,10 @@
 # Redux Saga Patterns [![Build Status](https://travis-ci.org/ssaucedo/redux-saga-patterns.svg?branch=development)](https://travis-ci.org/ssaucedo/redux-saga-patterns)
 
+Fix Twitter service config import.
+
 ```
 
-git clone https://github.com/ssaucedo/redux-saga-patterns && npm install && npm run start
+git clone https://github.com/ssaucedo/redux-saga-patterns && cd redux-saga-patterns && npm install && npm run start
 
 ```
 

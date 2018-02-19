@@ -10,19 +10,24 @@ export default {
 // TODO: FORK the operation, so the operation is not aware of the execution mode.
 export function* operationFlow (active) {
     // Could be a simple action. This is kept as two for the sake of simplicity.
-    const id = getUniqueId()
-    yield put({type: 'NEW_OPERATION', payload: {id}})
-    yield call(laterReturn, {})
-    yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-    yield call(laterReturn, {})
-    yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-    yield call(laterReturn, {})
-    yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-    yield put({type: 'OPERATION_COMPLETION', payload: {id}})
+    yield call(operation)
     if(active) {
       yield put({type: 'RELEASE'})
       yield call(checkQueue)
     }
+}
+
+
+export function *operation () {
+  const id = getUniqueId()
+  yield put({type: 'NEW_OPERATION', payload: {id}})
+  yield call(laterReturn, {})
+  yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
+  yield call(laterReturn, {})
+  yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
+  yield call(laterReturn, {})
+  yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
+  yield put({type: 'OPERATION_COMPLETION', payload: {id}})
 }
 
 
@@ -38,7 +43,6 @@ export function* checkQueue() {
 
 export function* operationDispatcher() {
   const semaphore = yield select((state) => state.pattern2.semaphore)
-
   if(semaphore.active) {
     if(semaphore.value === semaphore.limit) {
       yield put({type: 'ADD_TO_QUEUE', payload: {operation: {id: getUniqueId()}}})

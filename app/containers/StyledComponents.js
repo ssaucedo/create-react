@@ -25,3 +25,8 @@ export const Pattern = WrappWithClassName('pattern');
 export const FlowSwitch = WrappWithClassName('flow-switch');
 
 export const AppContainer = WrappWithClassName('app-container');
+
+
+// text styles
+
+export const HeadLine = WrappWithClassName('head-line');

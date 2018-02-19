@@ -12,28 +12,25 @@ const Pattern2 = (props) => {
       <h2>{Object.keys(props.operations).length} total operations</h2>
       <div style={{display: 'flex', flex: 1, flexDirection: 'column', padding: '1rem'}}>
         <div>
-          <h3>{'In progress'}</h3>
+          <h3>{`In progress ${Object.values(props.operations).filter(op => op.status === 'IN_PROGRESS').length}`}</h3>
           <div style={{display: 'flex'}}>
             {Object.values(props.operations).filter(op => op.status === 'IN_PROGRESS').map((op, key) =>
               <Operation key={key} {...op} />
             )}
+          </div>
+          <div>
+            <h3>{'Completed'}</h3>
+            <div style={{display: 'flex'}}>
+              {Object.values(props.operations).filter(op => op.status === 'COMPLETED').map((op, key) =>
+                <Operation key={key} {...op} />
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-/*
- <div>
- <h3>{'Completed'}</h3>
- <div style={{display: 'flex'}}>
- {Object.values(props.operations).filter(op => op.status === 'COMPLETED').map((op, key) =>
- <Operation key={key} {...op} />
- )}
- </div>
- </div>
- */
 
 Pattern2.defaultProps = {
   operations: {},

@@ -7,6 +7,7 @@ import Pattern1 from '../../components/Pattern1/Pattern1'
 class Pattern1Container extends Component {
   constructor (props) {
     super(props)
+    this.interaction = this.interaction.bind(this)
   }
 
   componentWillMount () {
@@ -16,9 +17,13 @@ class Pattern1Container extends Component {
     })
   }
 
+  interaction() {
+    this.props.dispatch({type: 'CONNECTED_ELEMENT_INTERACTION', payload: {}})
+  }
+
   render () {
     return (
-      <Pattern1 {...this.props} />
+      <Pattern1 interaction={this.interaction} {...this.props} />
     )
   }
 }
@@ -28,6 +33,7 @@ Pattern1.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  handledOn: state.context.appContext.handledOn,
   isCreation: state.context.appContext.context === 'CREATION',
   label: state.context.appContext.context,
 })

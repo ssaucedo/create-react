@@ -7,7 +7,6 @@ export default {
   },
 }
 
-// TODO: FORK the operation, so the operation is not aware of the execution mode.
 export function* operationFlow (active) {
     // Could be a simple action. This is kept as two for the sake of simplicity.
     yield call(operation)
@@ -16,7 +15,6 @@ export function* operationFlow (active) {
       yield call(checkQueue)
     }
 }
-
 
 export function *operation () {
   const id = getUniqueId()

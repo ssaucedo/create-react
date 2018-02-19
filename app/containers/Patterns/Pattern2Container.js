@@ -14,7 +14,7 @@ class Pattern2Container extends Component {
 
 
   startOperation () {
-    for(let i = 0; i < 100 ;i++) {
+    for(let i = 0; i < 50 ;i++) {
       this.props.dispatch({type: 'START_NEW_OPERATION'})
     }
   }

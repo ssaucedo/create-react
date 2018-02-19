@@ -46,7 +46,8 @@ npm run start
 * General:
   * Sagas isolation.
   * Find a best way to handle async operations state. (new pattern?)
-
+  * Sagas Channels and Monitor research
+  ```https://github.com/redux-saga/redux-saga/tree/master/docs/api#sagamonitor```
 * Patterns:
 
   * Pattern 1
@@ -56,4 +57,6 @@ npm run start
     * Document.
   * Pattern 4
     * Check if reselect memoization is not related.
+
+    
     

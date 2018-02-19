@@ -27,5 +27,6 @@ export default {
   name:'buildService',
   getAPIVersion,
   getBuilds,
+  getUsers,
 }
 

@@ -1,7 +1,9 @@
 # Redux Saga Patterns [![Build Status](https://travis-ci.org/ssaucedo/redux-saga-patterns.svg?branch=development)](https://travis-ci.org/ssaucedo/redux-saga-patterns)
 
 ```
-npm run start
+
+git clone https://github.com/ssaucedo/redux-saga-patterns && npm install && npm run start
+
 ```
 
 ## Pattern 1:
@@ -68,7 +70,7 @@ of hitting the service again it's going to return the stored information.
 
 ### Why:
 
- - Your service computations are expensive or just takes too long.
+ - Your service computations are expensive or just take too long.
  - You may have a limited access to BE services or limited resources.
  - Perhaps you have a good reason to don't give front end developers access to services.
  - You really want to avoid mocking you services responses manually as the BE team is continually realising.
@@ -105,6 +107,4 @@ Probably the CI tools should run against real test services before a merge to ma
 
 ### Todos:
 
-* General:
-  * Sagas isolation. Apply pattern 1 for the whole app.
-  *     
+* Sagas isolation. Apply pattern 1 for the whole app. 

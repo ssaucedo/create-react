@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import RaisedButton from 'material-ui/RaisedButton'
-
+import React from 'react'
 
 const Pattern4 = () => {
   return (

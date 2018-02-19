@@ -9,7 +9,7 @@ const PATHS = {
 }
 
 module.exports = {
-  entry: './app/app.js',
+  entry: './app/index.js',
   output: {
     path: PATHS.build,
     filename: 'app.bundle.js',

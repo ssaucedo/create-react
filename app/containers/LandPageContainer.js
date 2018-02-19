@@ -7,7 +7,10 @@ import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import ActionAutorenew from 'material-ui/svg-icons/action/autorenew';
+import ActionLineStyle from 'material-ui/svg-icons/action/line-style';
+import ActionCompareArrows from 'material-ui/svg-icons/action/compare-arrows';
 import ActionTimeline from 'material-ui/svg-icons/action/timeline';
+import AvReplay from 'material-ui/svg-icons/av/replay';
 
 import {
   MainContainer,
@@ -42,14 +45,24 @@ class LandPageContainer extends Component {
                 />
 
                 <MenuItem
+                  onClick={updatePattern('PATTERN_2')}
+                  primaryText="Pattern 2"
+                  rightIcon={<ActionLineStyle />}
+                />
+                <MenuItem
                   onClick={updatePattern('PATTERN_3')}
                   primaryText="Pattern 3"
                   rightIcon={<ActionTimeline />}
                 />
                 <MenuItem
+                  onClick={updatePattern('PATTERN_4')}
+                  primaryText="Pattern 4"
+                  rightIcon={<ActionCompareArrows />}
+                />
+                <MenuItem
                   onClick={updatePattern('PATTERN_6')}
                   primaryText="Pattern 6"
-                  rightIcon={<ActionTimeline />}
+                  rightIcon={<AvReplay />}
                 />
               </Menu>
             </Paper>

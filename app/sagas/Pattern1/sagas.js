@@ -2,11 +2,13 @@ import { takeEvery, call, fork, put, take, cancel } from 'redux-saga/effects'
 
 function* connectedElementInteractionOnCreation () {
   console.log('handle on creation')
+  yield put({type: 'HANDLED_ON', payload: {context: 'CREATION'}})
   yield 'creation'
 }
 
 function* connectedElementInteractionOnEdition () {
   console.log('handle on edition')
+  yield put({type: 'HANDLED_ON', payload: {context: 'EDITION'}})
   yield 'edition'
 }
 

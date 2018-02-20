@@ -1,4 +1,4 @@
-import {init} from 'ramda'
+import { init } from 'ramda'
 
 const initialOperationState = {
   step: 0,
@@ -14,12 +14,12 @@ const initialState = {
 }
 
 // as we deconstruct there is no sense on setting value properties.
-function getSemaphore(value) {
+function getSemaphore (value) {
   const semaphore = Object.create(Object.prototype, {
-      active:{ writable: true, enumerable:true, value: false },
-      value: { writable: true, enumerable:true, value: 0 },
-      limit: { writable: false, enumerable: true, value: value}
-    })
+    active: {writable: true, enumerable: true, value: false},
+    value: {writable: true, enumerable: true, value: 0},
+    limit: {writable: false, enumerable: true, value: value}
+  })
   return semaphore
 }
 
@@ -44,30 +44,31 @@ export default function state (state = initialState, {type, payload}) {
           [payload.id]: {
             ...state.operations[payload.id],
             step: state.operations[payload.id].step + 1
+          },
+        },
+      }
+    }
+
+    case 'OPERATION_COMPLETION': {
+      return {
+        ...state,
+        operations: {
+          ...state.operations,
+          [payload.id]: {
+            ...state.operations[payload.id],
+            status: 'COMPLETED',
           }
         }
       }
     }
-      case 'OPERATION_COMPLETION': {
-        return {
-          ...state,
-          operations: {
-            ...state.operations,
-            [payload.id]: {
-              ...state.operations[payload.id],
-              status: 'COMPLETED'
-            }
-          }
-        }
-      }
 
     case 'OPERATION_QUEUE': {
       return {
         ...state,
         semaphore: {
           ...state.semaphore,
-          active: true,
-        }
+          active: !state.semaphore.active,
+        },
       }
     }
 
@@ -104,7 +105,6 @@ export default function state (state = initialState, {type, payload}) {
         queue: init(state.queue),
       }
     }
-
 
     default:
       return state

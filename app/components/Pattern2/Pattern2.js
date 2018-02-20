@@ -20,7 +20,7 @@ const Pattern2 = (props) => {
         To handle the number of concurrent sagas a semaphore is being used. As the number is limited if there is no available spot for a process execution the request will be added to a queue.`}
       </p>
       <RaisedButton style={{margin: '10px'}} onClick={props.startOperation} label="Dispatch 50 operation requests" primary={true}/>
-      <RaisedButton style={{margin: '10px'}} onClick={props.operationQueue} label="Activate semaphore (10) && queue" primary={true}/>
+      <RaisedButton style={{margin: '10px'}} onClick={props.operationQueue} label={!props.active ? 'Activate semaphore (10) && queue' : 'Deactivate semaphore (10) && queue'} secondary={props.active} primary={!props.active}/>
       <h2>{Object.keys(props.operations).length} total operations</h2>
       <div style={{display: 'flex', flex: 1, flexDirection: 'column', padding: '1rem'}}>
         <div>
@@ -41,12 +41,14 @@ const Pattern2 = (props) => {
 
 Pattern2.defaultProps = {
   operations: {},
+  active: false,
 }
 
 Pattern2.propTypes = {
   startOperation: PropTypes.func.isRequired,
   operationQueue: PropTypes.func.isRequired,
   operations: PropTypes.object,
+  active: PropTypes.bool.isRequired,
 }
 
 export default Pattern2

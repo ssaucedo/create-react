@@ -33,10 +33,12 @@ class Pattern2Container extends Component {
 
 Pattern2Container.propTypes = {
   operations: PropTypes.object,
+  active: PropTypes.bool,
 }
 
 const mapStateToProps = ({pattern2}) => ({
     operations: pattern2.operations,
+    active: pattern2.semaphore.active,
   })
 
 export default connect(mapStateToProps)(Pattern2Container)

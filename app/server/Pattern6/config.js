@@ -6,4 +6,4 @@ const config = {
   timeout_ms: 60 * 1000,
 };
 
-export default config
+module.exports =   config;

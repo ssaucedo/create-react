@@ -3,7 +3,7 @@ import React from 'react'
 const Pattern4 = () => {
   return (
     <div>
-      {'Integration tests: Saga-Service and service mock using custom snapshots. IN PROGRESS'}
+      {'Service mock using custom snapshots and sagas-services Integration tests (in Progress). You can check app/components/Pattern4/tests/mockServices.js'}
     </div>
   )
 }

@@ -21,13 +21,6 @@ export default {
     colors: true,
     reasons: true, // if fail, show it very verbose
   },
-  resolve: {
-    alias: {
-      config: path.resolve(__dirname, 'app/config/'),
-      helpers: path.resolve(__dirname, 'app/helpers/'),
-      modules: path.resolve(__dirname, 'app/modules/'),
-    },
-  },
   module: {
     rules: [
       {

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "npm run serve:dev & npm run server:pattern6 & npm run server:pattern4",
+    "start": "npm-run-all -p -c serve:dev server:pattern4 server:pattern6 ",
     "server:pattern4": "node ./app/server/Pattern4/app.js",
-    "server:pattern6": "node ./app/server/Pattern6/app.js",
+    "server:pattern6": "node ./app/server/Pattern6/app.js || echo 'Twitter service start failed, check Pattern 6 config. You can ignore this and check the other patterns!! localhost:8080/patterns'",
     "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",
     "test": "jest",
     "lint": "eslint app/**/**.js",
@@ -52,7 +52,8 @@
     "postcss-loader": "^2.0.9",
     "pre-commit": "^1.2.2",
     "webpack": "2.2",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+    "npm-run-all": "^4.1.2"
   },
   "dependencies": {
     "axios": "^0.17.1",

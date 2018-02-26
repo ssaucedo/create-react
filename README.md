@@ -54,6 +54,9 @@ creation flow actions as the associated sagas are not running.
   (e.g from any of the react lifecycle methods) the remain those simple.
     
 ## Pattern 4:
+
+TODO: REDESIGN SAGAS INTEGRATION TESTS. We need a simpler API for sagas testing. Probably using more generators.   
+
   Little set up to mock backend services trough custom snapshots.
    
 Service snapshots feature is partially implemented on ***app/components/Pattern4/tests/mockServices.js***.

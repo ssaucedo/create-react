@@ -11,7 +11,7 @@ export default {
 };
 
 export function* operation(service) {
-  const v = yield call(service.getAPIVersion);
+  const v = yield call(service.getBuilds);
   if (v === 0.2) {
     console.log('Retrieving users');
     const users = yield call(service.getUsers);

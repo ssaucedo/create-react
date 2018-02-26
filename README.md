@@ -1,10 +1,10 @@
 # Redux Saga Patterns [![Build Status](https://travis-ci.org/ssaucedo/redux-saga-patterns.svg?branch=development)](https://travis-ci.org/ssaucedo/redux-saga-patterns)
 
-Fix Twitter service config import.
+FIX PROD BUILD
 
 ```
 
-git clone https://github.com/ssaucedo/redux-saga-patterns && cd redux-saga-patterns && npm install && npm run start
+git clone https://github.com/ssaucedo/redux-saga-patterns && cd redux-saga-patterns && npm install && npm start
 
 ```
 
@@ -49,9 +49,9 @@ creation flow actions as the associated sagas are not running.
   
 ## Pattern 3:
   Handle all interactions in sagas. UI flows handle on a centralized way User interactions and Services interactions.
-  The redux store is updated from UI flows, not from Services (services are implemented as sagas on this pattern).
+  The redux store is updated from UI flows, not from Services (services are implemented as tasks on this pattern).
   This allows to easily test all the interactions on a centralized way. Removing all the flow logic from the components
-  (e.g from any of the react lifecycle methods) the remain those simple.
+  (e.g from any of the react lifecycle methods) the remain those simple. More details in the source code.
     
 ## Pattern 4:
 
@@ -112,5 +112,8 @@ Probably the CI tools should run against real test services before a merge to ma
 
 ### Todos:
 
-* Sagas isolation. Apply pattern 1 for the whole app. 
+* Sagas isolation. Apply pattern 1 for the whole app.
+* Update to Webpack 4.
+* Fix nom build.
+* Deploy.
 

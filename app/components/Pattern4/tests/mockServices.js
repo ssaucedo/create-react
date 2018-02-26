@@ -3,12 +3,49 @@ import buildService from '../service/buildService'
 import regeneratorRuntime from 'regenerator-runtime'
 
 /*
- Lets say that we have an expensive operation or we just want to save us for making real http requests when making integration tests.
+ Lets say that we have an expensive operation or we just want
+ to save us for making real http requests when making integration tests.
  We would need to mock the response data.
- But mocking can be hard when endpoints change as lot. You may end up having dummy and deprecated objects.
+ But mocking can be hard when endpoints change as lot.
+ You may end up having dummy and deprecated objects.
+ */
+
+/*
+ USAGE EXAMPLE:
+
+ (async function test() {
+ const a = await SSnap(buildService)(buildService.getBuilds, []);
+ console.log(a);
+ }());
+
  */
 
 const baseDirectory = './snapshots'
+
+function checkVersion (vs, service) {
+  if (vs !== service.version) {
+    console.log(`deprecated service snapshot ${service.version}. Current version: ${vs}`)
+    return {}
+  }
+  return service
+}
+
+function checkDirectory (baseDirectory, ref) {
+  if (!fs.existsSync(ref)) {
+    if (!fs.existsSync(baseDirectory)) {
+      fs.mkdirSync(baseDirectory)
+    }
+    fs.writeFileSync(ref, JSON.stringify({}))
+  }
+}
+
+function loadService (data, ref) {
+  try {
+    return JSON.parse(data)
+  } catch (err) {
+    throw new Error(`Store data is not a valid JSON. Check: ${ref} ${err.message}`)
+  }
+}
 
 const SSnap = function (service) {
   return async function (fun, args) {
@@ -28,46 +65,10 @@ const SSnap = function (service) {
         console.log('saving service endpoint snapshot')
         fs.writeFile(ref, JSON.stringify({...snapService, [fun.name]: res, version: vs}))
         return Promise.resolve(res)
-      } else {
-        return Promise.resolve(serviceResponse)
       }
+      return Promise.resolve(serviceResponse)
     }
   }
 }
 
-function checkVersion (vs, service) {
-  if(vs !== service.version) {
-    console.log(`deprecated service snapshot ${service.version}. Current version: ${vs}`)
-    return {}
-  }
-  return service
-}
-
-function checkDirectory (baseDirectory, ref) {
-  if (!fs.existsSync(ref)) {
-
-    if (!fs.existsSync(baseDirectory)) {
-      fs.mkdirSync(baseDirectory)
-    }
-    fs.writeFileSync(ref, JSON.stringify({}))
-  }
-}
-
-function loadService (data, ref) {
-  try {
-    return JSON.parse(data)
-  } catch (err) {
-    throw new Error(`Store data is not a valid JSON. Check: ${ref} ${err.message}`)
-  }
-}
-
-(async function test () {
-  const a = await SSnap(buildService)(buildService.getBuilds, [])
-  console.log(a)
-})()
-
-
-
-
-
-
+export default SSnap

@@ -21,6 +21,18 @@ describe.skip('Integration test saga-services:', () => {
   })
 })
 
+describe.skip('Integration test saga-services:', () => {
+  it('Service snapshot Base case', () => {
+    const saga = operation(SSnapProxy(BuildService))
+    const getAPIEffect = saga.next().value
+    expect(getAPIEffect).toEqual(call(BuildService.getAPIVersion))
+    const nextEffect = saga.next().value
+    expect(getAPIEffect).toEqual(call(BuildService.getUsers))
+    const sagaCompletion = saga.next()
+    expect(sagaCompletion.done).toEqual(true)
+  })
+})
+
 /**
  * This is here just because it's nice.
  */

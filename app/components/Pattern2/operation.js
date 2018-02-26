@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Step,
@@ -8,9 +8,8 @@ import {
   StepContent,
 } from 'material-ui/Stepper';
 
-const Operation = (props) => {
-  return (
-    <div style={{maxWidth: 380, maxHeight: 400, margin: 'auto'}}>
+const Operation = props => (
+    <div style={{ width: '10%', maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
       <Stepper activeStep={props.step} orientation="vertical">
         <Step>
           <StepLabel>Step 1</StepLabel>
@@ -22,11 +21,10 @@ const Operation = (props) => {
           <StepLabel>Step 1</StepLabel>
         </Step>
       </Stepper>
-    </div>)
-}
+    </div>);
 
 Operation.propTypes = {
   step: PropTypes.number,
-}
+};
 
-export default Operation
+export default Operation;

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "npm-run-all -p -c serve:dev server:pattern4 server:pattern6 ",
+    "start": "npm-run-all -p -c serve:dev",
+    "start:services": "npm-run-all -p -c server:pattern4 server:pattern6 ",
     "server:pattern4": "node ./app/server/Pattern4/app.js",
     "server:pattern6": "node ./app/server/Pattern6/app.js || echo 'Twitter service start failed, check Pattern 6 config. You can ignore this and check the other patterns!! localhost:8080/patterns'",
     "serve:dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.babel.js",

@@ -1,5 +1,6 @@
 function resolvePromise(val, gen) {
-  val.then((r) => {
+  return val.then((r) => {
+    console.log('RESOLVED PROMISE')
     next(gen, r);
   });
 }
@@ -12,21 +13,24 @@ function next(gen, res) {
   const yielded = gen.next(res);
   if (!yielded.done) {
     if (yielded.value && isPromise(yielded.value)) {
-      resolvePromise(yielded.value, gen);
+      return resolvePromise(yielded.value, gen);
     } else if (Array.isArray(yielded.value)) {
       if (yielded.value.every(isPromise)) {
-        resolvePromise(Promise.all(yielded.value), gen);
+        return resolvePromise(Promise.all(yielded.value), gen);
       } else {
-        next(gen, yielded.value);
+        return next(gen, yielded.value);
       }
     } else {
-      next(gen, yielded.value);
+      return next(gen, yielded.value);
     }
   }
+  console.log(res)
+  return res;
 }
 
 function generatorExecutor(gen) {
-  next(gen, arguments);
+  const res = next(gen, arguments);
+  return res;
 }
 
 export default generatorExecutor;

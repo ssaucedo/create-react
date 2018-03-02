@@ -33,7 +33,6 @@ function loadService (data, ref) {
 function SSnapProxy (service) {
   var handler = {
     get: function (target, thisArg, args) {
-      console.log(thisArg)
       const fun = target[thisArg]
       const ref = `./snapshots/${service.name}.js`
       if (service.name === undefined) throw new Error('Service must export a service name')

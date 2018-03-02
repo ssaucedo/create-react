@@ -56,7 +56,7 @@ function SSnapProxy (service) {
               })
             }
             console.log('RETURN', serviceResponse)
-            return function () { Promise.resolve(serviceResponse)}
+            return function () {Promise.resolve(serviceResponse)}
           })
         }
       }

@@ -6,23 +6,22 @@ import generatorExecutor from '../generatorExecutor'
 
 // check https://github.com/redux-saga/redux-saga/blob/34c9093684323ab92eacdf2df958f31d9873d3b1/test/interpreter/effectMiddlewares.js#L88
 
-function* checkAndExecuteEffect (effect, service, fn, saga, effResult) {
-  const yieldedEffect = saga.next(effResult).value
-  expect(yieldedEffect).toEqual(effect(service[fn]))
-  return yield (service[fn]())
+function checkAndExecuteEffect (effect, service, fn, saga, effResult) {
+  const yieldedEffect = saga.next(effResult).value;
+  expect(yieldedEffect).toEqual(effect(service[fn]));
+  return service[fn]()
 }
 
 describe('Integration test saga-services:', () => {
   it('Service snapshot Base case', done => {
-    const proxiedService = SSnapProxy(BuildService)
     generatorExecutor(test())
     function* test () {
       const saga = operation(BuildService)
-      const effResult = yield generatorExecutor(checkAndExecuteEffect(call, BuildService, 'getAPIVersion', saga))
+      const effResult = yield checkAndExecuteEffect(call, BuildService, 'getAPIVersion', saga);
       console.log(effResult)
-      //const sagaCompletion = generatorExecutor(checkAndExecuteEffect(call, BuildService, 'getBuilds', saga));
-      //console.log(sagaCompletion);
-      //expect(sagaCompletion.done).toEqual(true);
+      const effResult2 = yield checkAndExecuteEffect(call, BuildService, 'getUsers', saga, effResult);
+      console.log(effResult2);
+      expect(saga.next().done).toEqual(true);
       yield done()
     }
   })

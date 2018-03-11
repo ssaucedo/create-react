@@ -5,11 +5,28 @@ export default {
   * flow() {
     yield takeLatest('USER_STARTS_FLOW', basicFlow)
   },
+};
+
+export function updateState(type, payload) {
+  return put({ type, payload });
 }
 
-export function updateState (type, payload) {
-  return {type, payload}
-}
+
+const ui = {};
+
+const user = {};
+
+ui.change = {
+  sidebarState: updateState('UPDATE_SIDEBAR_STATE'),
+  sidebarLoading: updateState('UPDATE_SIDEBAR_LOADING', {loading: true}),
+  sidebarStopLoading: updateState('UPDATE_SIDEBAR_LOADING', {loading: false}),
+  modalState: updateState('UPDATE_MODAL_STATE'),
+};
+
+user.choice = {
+  selection: take('USER_SELECTION_STEP'),
+  confirmation: take('USER_CONFIRMATION_STEP'),
+};
 
 /**
  * Basic flow.
@@ -37,26 +54,26 @@ export function updateState (type, payload) {
 export function* basicFlow () {
   try {
     // Could be a simple action. This is kept as two for the sake of simplicity.
-    yield put(updateState('UPDATE_SIDEBAR_STATE'))
-    yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: true}))  // UI update
-    const res = yield call(basicFlowService) // BE call.
+    yield ui.change.sidebarState;
+    yield ui.change.sidebarLoading;
+    const res = yield call(basicFlowService); // BE call.
     if (res.error) {
-      return yield put(updateState('ERROR_ON_BASIC_FLOW', {...res}))   // BE error handling.
+      return yield put(updateState('ERROR_ON_BASIC_FLOW', {...res}));   // BE error handling.
     }
 
-    yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: false}))  // UI update
-    const selectionStep = yield take('USER_SELECTION_STEP')             // Wait for user interaction
+    yield ui.change.sidebarStopLoading;
+    const selectionStep = yield user.choice.selection            // Wait for user interaction
     if (selectionStep.cancel) {
-      return yield put(updateState('RESET_FLOW'))                       // Handle user cancelling.
+      return yield updateState('RESET_FLOW')                       // Handle user cancelling.
     }
-    yield put(updateState('UPDATE_MODAL_STATE'))                        // UI update, open modal.
-    const confirmationStep = yield take('USER_CONFIRMATION_STEP')       // Wait for user interaction (on the Modal)
+    yield updateState('UPDATE_MODAL_STATE')                        // UI update, open modal.
+    const confirmationStep = yield user.choice.confirmation        // Wait for user interaction (on the Modal)
     if (confirmationStep.cancel) {
-      return yield put(updateState('RESET_FLOW'))                       // Handle user cancelling.
+      return yield updateState('RESET_FLOW')                       // Handle user cancelling.
     }
-    yield put(updateState('UPDATE_MODAL_STATE'))                        // UI update, close modal.
-    yield put(updateState('RESET_FLOW'))                                // Clean flow state.
+    yield updateState('UPDATE_MODAL_STATE')                         // UI update, close modal.
+    yield updateState('RESET_FLOW')                                 // Clean flow state.
   } catch (e) {                                                         // Handle unexpected error.
-    return yield put(updateState('ERROR_ON_BASIC_FLOW', {error: 'Unexpected error on basicFlowService', reason: e}))
+    return yield updateState('ERROR_ON_BASIC_FLOW', {error: 'Unexpected error on basicFlowService', reason: e})
   }
 }

@@ -7,12 +7,27 @@ import {genJest, checkAndExecuteEffect} from './sagasITHelpers';
 describe('Integration test saga-services:', () => {
   genJest('gen test', function* test (done) {
     const saga = operation(BuildService)
-    const effResult = yield checkAndExecuteEffect(call, BuildService, 'getAPIVersion', saga);
-    const effResult2 = yield checkAndExecuteEffect(call, BuildService, 'getUsers', saga, effResult);
+    const proxied = SSnapProxy.bind({})(BuildService)
+    const effResult = yield checkAndExecuteEffect(call, BuildService, proxied, 'getAPIVersion', saga);
+    const effResult2 = yield checkAndExecuteEffect(call, BuildService, proxied, 'getUsers', saga, effResult);
+    expect(JSON.stringify(effResult2)).toEqual(
+      "[{\"id\":1,\"name\":\"Mike\"},{\"id\":2,\"name\":\"Irem\"},{\"id\":3,\"owner\":\"Joe\"}]")
     expect(saga.next().done).toEqual(true);
     yield done()
   })
 })
+/*
+describe('Integration test saga-services:', () => {
+  genJest('gen test', function* test (done) {
+
+    const ss = SSnapProxy.bind({})(BuildService)
+    const b = yield ss.getBuilds()
+    console.log(b)
+    done()
+
+  });
+});
+*/
 
 /**
  * This is here just because it's nice.

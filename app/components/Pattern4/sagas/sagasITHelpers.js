@@ -9,10 +9,10 @@ import generatorExecutor from '../generatorExecutor'
  * @param effResult
  * @return {*}
  */
-function checkAndExecuteEffect (effect, service, fn, saga, effResult) {
+function checkAndExecuteEffect (effect, service, proxied, fn, saga, effResult) {
   const yieldedEffect = saga.next(effResult).value;
   expect(yieldedEffect).toEqual(effect(service[fn]));
-  return service[fn]();
+  return proxied[fn]();
 }
 
 function genJest (name, gen) {

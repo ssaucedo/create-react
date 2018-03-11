@@ -26,10 +26,47 @@ function loadService (data, ref) {
   try {
     return JSON.parse(data)
   } catch (err) {
-    throw new Error(`Store data is not a valid JSON. Check: ${ref} ${err.message}`)
+    throw new Error(`Store data: ${data} is not a valid JSON. Check: ${ref} ${err.message}`)
   }
 }
 
+
+function SSnapProxy (service) {
+
+  Object.keys(service).map(k => {
+    this[k] = (k => (...args) => {
+      const ref = `./snapshots/${service.name}.js`
+      checkDirectory(baseDirectory, ref)
+      const content = fs.readFileSync(ref, 'utf8')
+      if (content.err) {
+        throw new Error(`Error while reading file: ${ref}. Error: ${err}`)
+      } else {
+        return service.getAPIVersion().then(vs => {
+          const snapService = checkVersion(vs, loadService(content, ref))
+          const serviceResponse = snapService[k]
+          if (!serviceResponse) {
+            return service[k](args).then(res => {
+              console.log('CALLING SERVICE')
+              console.log('saving service endpoint snapshot')
+              fs.writeFile(ref, JSON.stringify({...snapService, [k]: res, version: vs}))
+              console.log('RETURN', res)
+              return Promise.resolve(res)
+            })
+          } else {
+            return serviceResponse
+          }
+        })
+      }
+    })(k)
+  })
+
+  return this
+}
+
+
+
+
+/**
 function SSnapProxy (service) {
   var handler = {
     get: function (target, thisArg, args) {
@@ -63,6 +100,7 @@ function SSnapProxy (service) {
   }
   return new Proxy(service, handler)
 }
+**/
 
 export default SSnapProxy
 

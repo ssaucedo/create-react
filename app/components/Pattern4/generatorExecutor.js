@@ -24,7 +24,6 @@ function next(gen, res) {
       return next(gen, yielded.value);
     }
   }
-  console.log(res)
   return res;
 }
 

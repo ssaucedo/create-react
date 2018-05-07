@@ -1,5 +1,5 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
-import {laterReturn} from '../helpers'
+import {shortDelay} from '../helpers'
 
 export default {
   * flow() {
@@ -19,11 +19,11 @@ export function* operationFlow (active) {
 export function *operation () {
   const id = getUniqueId()
   yield put({type: 'NEW_OPERATION', payload: {id}})
-  yield call(laterReturn, {})
+  yield call(shortDelay, {})
   yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-  yield call(laterReturn, {})
+  yield call(shortDelay, {})
   yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
-  yield call(laterReturn, {})
+  yield call(shortDelay, {})
   yield put({type: 'UPDATE_OPERATION_STEP', payload: {id}})
   yield put({type: 'OPERATION_COMPLETION', payload: {id}})
 }

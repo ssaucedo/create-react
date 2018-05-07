@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CircularProgress } from 'material-ui';
 
 const defaultStyles = {
   root: {
@@ -9,6 +10,7 @@ const defaultStyles = {
     overflow: 'hidden',
   },
   sidebar: {
+    display: 'flex',
     position: 'absolute',
     width: '30%',
     height: '100%',
@@ -84,20 +86,15 @@ class SelectionSidebar extends Component {
     return (
       <div {...rootProps}>
         <div className="custom-sidebar-class" style={sidebarStyle} ref={this.saveSidebarRef}>
-          <div style={{width: '100%', height: '100%'}}>
             {
-              this.props.loading ? <div>LOADING</div> : (
-                <div>
-                  <div
-                    className="next-selection-flow"
-                    onClick={() => this.props.selectOption({next: true})}
-                  >{'NEXT'}
-                  </div>
-                  <div className="cancel-flow" onClick={() => this.props.selectOption({cancel: true})}>CANCEL</div>
+              this.props.loading ?
+                      <CircularProgress color={"#E0F7FA"} style={{"margin": "auto"}} size={80} thickness={5} /> : (
+                <div style={{margin: "auto"}}>
+                  <div className="next-selection-flow" onClick={() => this.props.selectOption({next: true})}>{'NEXT'}</div>
+                  <div className="cancel-flow" onClick={() => this.props.selectOption({cancel: true})}>{'CANCEL'}</div>
                 </div>
               )
             }
-          </div>
         </div>
         <div
           className={this.props.overlayClassName}

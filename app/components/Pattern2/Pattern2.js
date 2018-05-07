@@ -15,8 +15,8 @@ const Pattern2 = props => (
         {'Concurrency'}
       </HeadLine>
       <p>
-        {`This pattern allows to execute a N number of tasks on a concurrent way, giving the appearance of simultaneous execution.
-        To handle the number of concurrent tasks a semaphore is being used. As the number is limited if there is no available spot for a process execution the request will be added to a queue.`}
+        {`This pattern allows to execute a N number of tasks on a concurrent way.
+        A semaphore was introduced to limit the number of concurrent tasks. If there is no available spot for a process execution the request will be added to a queue.`}
       </p>
       <RaisedButton style={{ margin: '10px' }} onClick={props.startOperation} label="Dispatch 50 operation requests" primary={true}/>
       <RaisedButton style={{ margin: '10px' }} onClick={props.operationQueue} label={!props.active ? 'Activate semaphore (10) && queue' : 'Deactivate semaphore (10) && queue'} secondary={props.active} primary={!props.active}/>

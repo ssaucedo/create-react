@@ -1,14 +1,8 @@
-import { takeLatest, call, put, take } from 'redux-saga/effects'
-import basicFlowService from './sagasServices'
+import { takeLatest, call, put, take } from 'redux-saga/effects';
+import basicFlowService from './sagasServices';
 
-export default {
-  * flow() {
-    yield takeLatest('USER_STARTS_FLOW', basicFlow)
-  },
-}
-
-export function updateState (type, payload) {
-  return {type, payload}
+export function updateState(type, payload) {
+  return { type, payload };
 }
 
 /**
@@ -26,37 +20,42 @@ export function updateState (type, payload) {
  *
  *  On the usual approach you configure the actions to dispatch on a container (e.g mapDispatchToProps).
  *  Then the user interacts with the application triggering those callbacks.
- *  My understanding is that the (e.g ConfirmationSidebarContainer) container just needs to define
- *  a API for user interactions and does not have to know how itself interacts with other components in a flow.
+ *  Using this approach (e.g ConfirmationSidebarContainer) containers just needs to define
+ *  an API for user interactions and does not have to know how itself interacts with other components in a flow.
  *  The flow saga is the responsible of coordination.
  *
  *
- *  With a quick look on the following saga a developer can have an idea on how the Apps unique flow is
- *  composed.
+ *  With a quick look on a saga a user developer should be able to get a basic idea on how the app behaves.
  */
 export function* basicFlow () {
   try {
     // Could be a simple action. This is kept as two for the sake of simplicity.
     yield put(updateState('UPDATE_SIDEBAR_STATE'))
-    yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: true}))  // UI update
-    const res = yield call(basicFlowService) // BE call.
+    yield put(updateState('UPDATE_SIDEBAR_LOADING', { loading: true }));  // UI update
+    const res = yield call(basicFlowService);                           // BE call.
     if (res.error) {
-      return yield put(updateState('ERROR_ON_BASIC_FLOW', {...res}))   // BE error handling.
+      return yield put(updateState('ERROR_ON_BASIC_FLOW', { ...res }));   // BE error handling.
     }
 
-    yield put(updateState('UPDATE_SIDEBAR_LOADING', {loading: false}))  // UI update
-    const selectionStep = yield take('USER_SELECTION_STEP')             // Wait for user interaction
+    yield put(updateState('UPDATE_SIDEBAR_LOADING', { loading: false }));  // UI update
+    const selectionStep = yield take('USER_SELECTION_STEP');             // Wait for user interaction
     if (selectionStep.cancel) {
-      return yield put(updateState('RESET_FLOW'))                       // Handle user cancelling.
+      return yield put(updateState('RESET_FLOW'));                       // Handle user cancelling.
     }
-    yield put(updateState('UPDATE_MODAL_STATE'))                        // UI update, open modal.
-    const confirmationStep = yield take('USER_CONFIRMATION_STEP')       // Wait for user interaction (on the Modal)
+    yield put(updateState('UPDATE_MODAL_STATE'));                        // UI update, open modal.
+    const confirmationStep = yield take('USER_CONFIRMATION_STEP');       // Wait for user interaction (on the Modal)
     if (confirmationStep.cancel) {
-      return yield put(updateState('RESET_FLOW'))                       // Handle user cancelling.
+      return yield put(updateState('RESET_FLOW'));                       // Handle user cancelling.
     }
-    yield put(updateState('UPDATE_MODAL_STATE'))                        // UI update, close modal.
-    yield put(updateState('RESET_FLOW'))                                // Clean flow state.
+    yield put(updateState('UPDATE_MODAL_STATE'));                        // UI update, close modal.
+    yield put(updateState('RESET_FLOW'));                               // Clean flow state.
   } catch (e) {                                                         // Handle unexpected error.
-    return yield put(updateState('ERROR_ON_BASIC_FLOW', {error: 'Unexpected error on basicFlowService', reason: e}))
+    return yield put(updateState('ERROR_ON_BASIC_FLOW', { error: 'Unexpected error on basicFlowService', reason: e }));
   }
 }
+
+export default {
+  * flow() {
+    yield takeLatest('USER_STARTS_FLOW', basicFlow);
+  },
+};

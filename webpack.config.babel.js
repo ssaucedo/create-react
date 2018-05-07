@@ -12,7 +12,8 @@ export default {
   entry: [
     PATHS.app,
   ],
-  output: {
+    mode: 'production',
+    output: {
     path: PATHS.build,
     filename: 'bundle.js',
     publicPath: '/',
@@ -31,7 +32,7 @@ export default {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          loader: 'css-loader?importLoaders=1!postcss-loader',
+          use: 'css-loader?importLoaders=1!postcss-loader',
         }),
       },
     ],

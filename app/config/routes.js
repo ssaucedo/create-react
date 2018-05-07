@@ -7,7 +7,7 @@ function getRoutes(history) {
   return (
     <Router history={history}>
       <Route >
-        <Route path="/patterns" component={props => <LandPageContainer {...props} />}/>
+        <Route path="/" component={props => <LandPageContainer {...props} />}/>
       </Route>
     </Router>
   );

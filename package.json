@@ -72,7 +72,9 @@
     "react-redux": "^5.0.6",
     "react-router": "^3.0.5",
     "redux": "^3.7.2",
+    "redux-async-flows": "^1.0.1-1",
     "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.11.1",
     "styled-components": "^2.3.3",
     "twit": "^2.2.9"

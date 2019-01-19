@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { userFlow } from '../../sagas/Pattern3/sagas';
 import Pattern3 from '../../components/Pattern3/Pattern3'
 
 class Pattern3Container extends Component {
@@ -15,7 +16,7 @@ class Pattern3Container extends Component {
   }
 
   onStartFlow = () => {
-    this.props.dispatch({type: 'USER_STARTS_FLOW'})
+    this.props.dispatch(userFlow())
   }
 
   selectModalOption = (option) => {

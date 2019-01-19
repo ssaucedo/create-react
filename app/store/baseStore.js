@@ -8,11 +8,21 @@ import tweets from './Pattern6/tweets';
 import uiStore from '../store/uiStore';
 import rootSagas from '../sagas/rootSagas';
 
+
+import createAsyncFlowsMiddleware from 'redux-async-flows';
+import thunk from 'redux-thunk';
+
+ 
+const {
+    take,
+    asyncFlowsMiddleware,
+} = createAsyncFlowsMiddleware();
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(combineReducers({
   uiStore, context, pattern2, pattern3, pattern6, tweets,
 }), compose(
-  applyMiddleware(sagaMiddleware),
+  applyMiddleware(sagaMiddleware, asyncFlowsMiddleware, thunk.withExtraArgument(take)),
   window.devToolsExtension ? window.devToolsExtension() : f => f,
 ));
 
